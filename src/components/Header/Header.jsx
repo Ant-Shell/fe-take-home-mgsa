@@ -1,3 +1,4 @@
+import SearchBar from '../SearchBar/SearchBar'
 import './Header.css'
 
 const Header = () => {
@@ -10,7 +11,7 @@ const Header = () => {
         </nav>
         <p>Cart</p>
       </div>
-    <p>Searchbar</p>
+    <SearchBar />
   </header>
   )
 }
