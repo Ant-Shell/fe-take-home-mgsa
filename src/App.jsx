@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import Header from './components/Header/Header'
 import fetchFood from './utilities/apiCalls'
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <main>
-      {/* <Header /> */}
+      <Header />
       {/* <Home /> */}
       {/* <SearchResults /> */}
       {/* <Footer /> */}
