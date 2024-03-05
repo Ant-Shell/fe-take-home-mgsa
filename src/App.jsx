@@ -8,6 +8,7 @@ import { Routes, Route, useParams } from 'react-router-dom'
 
 function App() {
   const [foodItemResult, setFoodItemResult] = useState({})
+  const [cart, setCart] = useState([])
 
   const getFoodItem = (foodItem) => {
     fetchFood(foodItem)
