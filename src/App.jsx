@@ -9,11 +9,26 @@ import { Routes, Route, useParams } from 'react-router-dom'
 function App() {
   const [foodItemResult, setFoodItemResult] = useState({})
   const [cart, setCart] = useState([])
+  const [cartNotif, setCartNotif] = useState("")
 
   const getFoodItem = (foodItem) => {
     fetchFood(foodItem)
     .then(data => setFoodItemResult(data))
   }
+
+  const addToCart = (foodItem) => {
+    const foundFood = cart.find(({foodId}) => foodId === foodItem.foodId)
+
+    if (!foundFood) {
+      setCart([...cart, foodItem])
+    } else (
+      setCartNotif("This item is already in the cart.")
+    )
+  }
+
+  // const removeFromCart = () => {
+
+  // }
 
   const Results = () => {
     let params = useParams()
@@ -23,6 +38,7 @@ function App() {
         foodItemResult={foodItemResult}
         item={params.item}
         getFoodItem={getFoodItem}
+        addToCart={addToCart}
       />
     )
   }
