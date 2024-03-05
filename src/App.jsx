@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Header from './components/Header/Header'
+import CartModal from './components/CartModal/CartModal'
 import Home from './components/Home/Home'
 import SearchResults from './components/SearchResults/SearchResults'
 import fetchFood from './utilities/apiCalls'
@@ -10,6 +11,7 @@ function App() {
   const [foodItemResult, setFoodItemResult] = useState({})
   const [cart, setCart] = useState([])
   const [cartNotif, setCartNotif] = useState("")
+  const [showModal, setShowModal] = useState(false)
 
   const getFoodItem = (foodItem) => {
     fetchFood(foodItem)
@@ -30,6 +32,14 @@ function App() {
 
   // }
 
+  const toggleModal = () => {
+    setShowModal(!showModal)
+  }
+
+  const hideModal = () => {
+    setShowModal(false)
+  }
+
   const Results = () => {
     let params = useParams()
 
@@ -45,7 +55,8 @@ function App() {
 
   return (
     <main>
-      <Header getFoodItem={getFoodItem} />
+      <Header getFoodItem={getFoodItem} toggleModal={toggleModal} />
+      { showModal && <CartModal hideModal={hideModal}/> }
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
