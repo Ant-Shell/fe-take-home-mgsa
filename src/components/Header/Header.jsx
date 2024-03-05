@@ -2,7 +2,13 @@ import SearchBar from '../SearchBar/SearchBar'
 import PropTypes from 'prop-types'
 import './Header.css'
 
-const Header = ({ getFoodItem }) => {
+const Header = ({ getFoodItem, toggleModal }) => {
+
+  const modalToggle = (e) => {
+    e.preventDefault()
+    toggleModal()
+  }
+
   return (
     <header className='header'>
       <div className='header-content-container'>
@@ -10,7 +16,7 @@ const Header = ({ getFoodItem }) => {
         <nav>
           <p>Navbar placeholder</p>
         </nav>
-        <p>Cart</p>
+        <p className='header-cart-img' onClick={(e) => modalToggle(e)}>Cart</p>
       </div>
     <SearchBar getFoodItem={getFoodItem} />
   </header>
@@ -20,5 +26,6 @@ const Header = ({ getFoodItem }) => {
 export default Header
 
 Header.propTypes = {
-  getFoodItem: PropTypes.func
+  getFoodItem: PropTypes.func,
+  toggleModal: PropTypes.func,
 }
