@@ -5,17 +5,16 @@ import Home from './components/Home/Home'
 import fetchFood from './utilities/apiCalls'
 
 function App() {
-  const [foodItem, setFoodItem] = useState([])
+  const [foodItemResult, setFoodItemResult] = useState([])
 
-  const getFoodItem = (e) => {
-    e.preventDefault()
-    fetchFood()
-    .then(data => setFoodItem(data))
+  const getFoodItem = (foodItem) => {
+    fetchFood(foodItem)
+    .then(data => setFoodItemResult(data))
   }
 
   return (
     <main>
-      <Header />
+      <Header getFoodItem={getFoodItem} />
       <Home />
       {/* <SearchResults /> */}
       {/* <Footer /> */}
