@@ -1,14 +1,31 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types'
+import FoodCard from '../FoodCard/FoodCard'
 import './SearchResults.css'
 
-const SearchResults = ({ foodItemResult }) => {
+const SearchResults = ({ foodItemResult, item, getFoodItem }) => {
 
   const {text, hints} = foodItemResult
 
-  const resultsList = hints.map(hint => {
+  const resultsList = hints?.map((hint, index) => {
+    const {food, measures} = hint
+    const {foodId, label, image} = food
+
     return (
-      <p key={hint.food.foodId}>{hint.food.label}</p>
+      <FoodCard
+        id={foodId}
+        label={label}
+        image={image}
+        measures={measures}
+        key={index}
+      />
     )
+  })
+
+  useEffect(() => {
+    if (!Object.keys(foodItemResult).length) {
+      getFoodItem(item)
+    }
   })
 
   return (
@@ -24,5 +41,7 @@ const SearchResults = ({ foodItemResult }) => {
 export default SearchResults
 
 SearchResults.propTypes = {
-  foodItemResult: PropTypes.object
+  foodItemResult: PropTypes.object,
+  item: PropTypes.string,
+  getFoodItem: PropTypes.func
 }
