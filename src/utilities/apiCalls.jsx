@@ -10,7 +10,7 @@ const fetchFood = async (foodItem) => {
       throw new Error(response.status)
     }
     const data = await response.json()
-    return data.hints
+    return data
   }
 
   catch(error) {
