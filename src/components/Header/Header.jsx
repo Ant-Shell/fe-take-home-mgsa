@@ -1,7 +1,8 @@
 import SearchBar from '../SearchBar/SearchBar'
+import PropTypes from 'prop-types'
 import './Header.css'
 
-const Header = () => {
+const Header = ({ getFoodItem }) => {
   return (
     <header className='header'>
       <div className='header-content-container'>
@@ -11,9 +12,13 @@ const Header = () => {
         </nav>
         <p>Cart</p>
       </div>
-    <SearchBar />
+    <SearchBar getFoodItem={getFoodItem} />
   </header>
   )
 }
 
 export default Header
+
+Header.propTypes = {
+  getFoodItem: PropTypes.func
+}
