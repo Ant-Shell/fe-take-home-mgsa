@@ -5,7 +5,7 @@ import Home from './components/Home/Home'
 import fetchFood from './utilities/apiCalls'
 
 function App() {
-  const [foodItemResult, setFoodItemResult] = useState([])
+  const [foodItemResult, setFoodItemResult] = useState({})
 
   const getFoodItem = (foodItem) => {
     fetchFood(foodItem)
