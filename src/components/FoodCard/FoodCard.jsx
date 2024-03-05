@@ -1,11 +1,21 @@
 import PropTypes from 'prop-types'
 import './FoodCard.css'
 
-const FoodCard = ({id, label, image, measures}) => {
+const FoodCard = ({food, measures, addToCart}) => {
+  const {foodId, label, image} = food
+
+  const addSelectionToCart = (e) => {
+    e.preventDefault()
+    addToCart(food)
+  }
+
   return (
     <section className='food-card'>
-      <p>{label}</p>
-      <img src={image} alt={label}/>
+      <div>
+        <img src={image} alt={label}/>
+        <p>{label}</p>
+      </div>
+      <button onClick={(e) => addSelectionToCart(e)}>Add to Cart</button>
     </section>
   )
 }
@@ -13,8 +23,7 @@ const FoodCard = ({id, label, image, measures}) => {
 export default FoodCard
 
 FoodCard.propTypes = {
-  id: PropTypes.string,
-  label: PropTypes.string,
-  image: PropTypes.string,
-  measures: PropTypes.array
+  food: PropTypes.object,
+  measures: PropTypes.array,
+  addToCart: PropTypes.func
 }
