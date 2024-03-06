@@ -47,10 +47,12 @@ function App() {
 
     return (
       <SearchResults
-        foodItemResult={foodItemResult}
         item={params.item}
+        cart={cart}
+        foodItemResult={foodItemResult}
         getFoodItem={getFoodItem}
         addToCart={addToCart}
+        removeFromCart={removeFromCart}
       />
     )
   }
