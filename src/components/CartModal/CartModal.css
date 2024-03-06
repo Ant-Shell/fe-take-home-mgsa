@@ -4,7 +4,7 @@
   left: 0;
   width: 33%;
   height: 90%;
-  background-color: rgba(238, 238, 238, 0.5);
+  background-color: rgba(238, 238, 238, 1);
   margin-left: 70vw;
   margin-top: 10vh;
   overflow-y: auto;
@@ -29,8 +29,9 @@
 
 .cart-modal-item {
   padding: 15px;
-  height: 200px;
-  width: 200px;
+  height: 225px;
+  width: 100%;
+  border-bottom: solid
 }
 
 .cart-modal-image {

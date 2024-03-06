@@ -1,12 +1,34 @@
 import PropTypes from 'prop-types'
 import './FoodCard.css'
 
-const FoodCard = ({food, measures, addToCart}) => {
+const FoodCard = ({ cart, food, measures, addToCart, removeFromCart }) => {
   const {foodId, label, image} = food
 
   const addSelectionToCart = (e) => {
     e.preventDefault()
     addToCart(food)
+  }
+
+  const removeSelectionFromCart = (e) => {
+    e.preventDefault()
+    removeFromCart(foodId)
+  }
+
+  const showButtonType = (id) => {
+    const foundFood = cart.find(({foodId}) => foodId === id)
+    if (foundFood) {
+      return (
+        <button onClick={(e) => removeSelectionFromCart(e)}>
+          Remove from Cart
+        </button>
+      )
+    } else {
+      return (
+        <button onClick={(e) => addSelectionToCart(e)}>
+          Add to Cart
+        </button>
+      )
+    }
   }
 
   return (
@@ -15,7 +37,7 @@ const FoodCard = ({food, measures, addToCart}) => {
         <img src={image} alt={label}/>
         <p>{label}</p>
       </div>
-      <button onClick={(e) => addSelectionToCart(e)}>Add to Cart</button>
+      { showButtonType(foodId) }
     </section>
   )
 }
@@ -23,7 +45,9 @@ const FoodCard = ({food, measures, addToCart}) => {
 export default FoodCard
 
 FoodCard.propTypes = {
+  cart: PropTypes.array,
   food: PropTypes.object,
   measures: PropTypes.array,
-  addToCart: PropTypes.func
+  addToCart: PropTypes.func,
+  removeFromCart: PropTypes.func,
 }

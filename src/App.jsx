@@ -23,14 +23,16 @@ function App() {
 
     if (!foundFood) {
       setCart([...cart, foodItem])
+      setCartNotif("")
     } else (
       setCartNotif("This item is already in the cart.")
     )
   }
 
-  // const removeFromCart = () => {
-
-  // }
+  const removeFromCart = (id) => {
+    const filteredCart = cart.filter(({foodId}) => foodId !== id)
+    setCart(filteredCart)
+  }
 
   const toggleModal = () => {
     setShowModal(!showModal)
@@ -45,18 +47,28 @@ function App() {
 
     return (
       <SearchResults
-        foodItemResult={foodItemResult}
         item={params.item}
+        cart={cart}
+        foodItemResult={foodItemResult}
         getFoodItem={getFoodItem}
         addToCart={addToCart}
+        removeFromCart={removeFromCart}
       />
     )
   }
 
   return (
     <main>
-      <Header getFoodItem={getFoodItem} toggleModal={toggleModal} />
-      { showModal && <CartModal cart={cart} hideModal={hideModal}/> }
+      <Header
+        getFoodItem={getFoodItem}
+        toggleModal={toggleModal}
+      />
+      { showModal &&
+        <CartModal cart={cart}
+          hideModal={hideModal}
+          removeFromCart={removeFromCart}
+        />
+      }
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

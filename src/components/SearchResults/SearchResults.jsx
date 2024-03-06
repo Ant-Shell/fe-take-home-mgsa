@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import FoodCard from '../FoodCard/FoodCard'
 import './SearchResults.css'
 
-const SearchResults = ({ foodItemResult, item, getFoodItem, addToCart }) => {
+const SearchResults = ({ cart, foodItemResult, item,
+  getFoodItem, addToCart, removeFromCart }) => {
 
   const {text, hints} = foodItemResult
 
@@ -12,9 +13,11 @@ const SearchResults = ({ foodItemResult, item, getFoodItem, addToCart }) => {
 
     return (
       <FoodCard
+        cart={cart}
         food={food}
         measures={measures}
         addToCart={addToCart}
+        removeFromCart={removeFromCart}
         key={index}
       />
     )
@@ -39,8 +42,10 @@ const SearchResults = ({ foodItemResult, item, getFoodItem, addToCart }) => {
 export default SearchResults
 
 SearchResults.propTypes = {
+  cart: PropTypes.array,
   foodItemResult: PropTypes.object,
   item: PropTypes.string,
   getFoodItem: PropTypes.func,
-  addToCart: PropTypes.func
+  addToCart: PropTypes.func,
+  removeFromCart: PropTypes.func,
 }
