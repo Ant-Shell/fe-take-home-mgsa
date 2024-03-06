@@ -56,7 +56,7 @@ function App() {
   return (
     <main>
       <Header getFoodItem={getFoodItem} toggleModal={toggleModal} />
-      { showModal && <CartModal hideModal={hideModal}/> }
+      { showModal && <CartModal cart={cart} hideModal={hideModal}/> }
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
