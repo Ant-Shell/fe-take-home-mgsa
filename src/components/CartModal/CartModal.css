@@ -17,8 +17,14 @@
   justify-content: space-around;
 }
 
-.cart-modal-button:hover {
+.cart-modal-close-button,
+.cart-modal-checkout-button {
   cursor: pointer;
+}
+
+.cart-modal-checkout-button {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .cart-modal-item-container {
