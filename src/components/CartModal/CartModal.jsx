@@ -1,19 +1,25 @@
 import PropTypes from 'prop-types'
 import './CartModal.css'
 
-const CartModal = ({ cart, hideModal }) => {
+const CartModal = ({ cart, hideModal, removeFromCart }) => {
 
   const closeModal = (e) => {
     e.preventDefault()
     hideModal()
   }
 
+  const removeItem = (e, id) => {
+    e.preventDefault()
+    removeFromCart(id)
+  }
+
   const cartItems = cart.map((item, index) => {
-    const {image, label} = item
+    const {image, label, foodId} = item
     return (
       <div className='cart-modal-item' key={index}>
         <img className='cart-modal-image' src={image} alt={label}/>
         <p>{label}</p>
+        <button onClick={(e) => removeItem(e, foodId)}>Remove Item</button>
       </div>
     )
   })
@@ -35,5 +41,6 @@ export default CartModal
 
 CartModal.propTypes = {
   cart: PropTypes.array,
-  hideModal: PropTypes.func
+  hideModal: PropTypes.func,
+  removeFromCart: PropTypes.func,
 }
