@@ -3,7 +3,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import PropTypes from 'prop-types'
 import './Header.css'
 
-const Header = ({ getFoodItem, toggleModal }) => {
+const Header = ({ getFoodItem, toggleModal, removeFromPurchasedItems }) => {
   const navigate = useNavigate()
 
   const modalToggle = (e) => {
@@ -14,6 +14,7 @@ const Header = ({ getFoodItem, toggleModal }) => {
   const returnHome = (e) => {
     e.preventDefault()
     navigate("/")
+    removeFromPurchasedItems()
   }
 
   return (
@@ -34,5 +35,6 @@ export default Header
 
 Header.propTypes = {
   getFoodItem: PropTypes.func,
+  removeFromPurchasedItems: PropTypes.func,
   toggleModal: PropTypes.func,
 }
