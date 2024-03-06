@@ -13,6 +13,10 @@
   justify-content: space-between;
 }
 
+.header-cart-logo:hover {
+  cursor: pointer;
+}
+
 .header-cart-img:hover {
   cursor: pointer;
 }
