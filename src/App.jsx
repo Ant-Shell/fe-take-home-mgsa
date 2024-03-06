@@ -72,10 +72,12 @@ function App() {
     <main>
       <Header
         getFoodItem={getFoodItem}
+        removeFromPurchasedItems={removeFromPurchasedItems}
         toggleModal={toggleModal}
       />
       { showModal &&
         <CartModal cart={cart}
+          addToPurchasedItems={addToPurchasedItems}
           hideModal={hideModal}
           removeFromCart={removeFromCart}
         />
