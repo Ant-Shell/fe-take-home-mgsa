@@ -3,20 +3,18 @@ import PropTypes from 'prop-types'
 import FoodCard from '../FoodCard/FoodCard'
 import './SearchResults.css'
 
-const SearchResults = ({ foodItemResult, item, getFoodItem }) => {
+const SearchResults = ({ foodItemResult, item, getFoodItem, addToCart }) => {
 
   const {text, hints} = foodItemResult
 
   const resultsList = hints?.map((hint, index) => {
     const {food, measures} = hint
-    const {foodId, label, image} = food
 
     return (
       <FoodCard
-        id={foodId}
-        label={label}
-        image={image}
+        food={food}
         measures={measures}
+        addToCart={addToCart}
         key={index}
       />
     )
@@ -43,5 +41,6 @@ export default SearchResults
 SearchResults.propTypes = {
   foodItemResult: PropTypes.object,
   item: PropTypes.string,
-  getFoodItem: PropTypes.func
+  getFoodItem: PropTypes.func,
+  addToCart: PropTypes.func
 }

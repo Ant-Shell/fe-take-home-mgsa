@@ -12,3 +12,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.header-cart-img:hover {
+  cursor: pointer;
+}
