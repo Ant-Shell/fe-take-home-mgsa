@@ -6,8 +6,8 @@ const Confirmation = ({ purchasedItems }) => {
   const purchasedItemsList = purchasedItems.map((item, index) => {
     const {image, label} = item
     return (
-      <div className='cart-modal-item' key={index}>
-        <img className='cart-modal-image' src={image} alt={label}/>
+      <div className='confirmation-item' key={index}>
+        <img className='confirmation-image' src={image} alt={label}/>
         <p>{label}</p>
       </div>
     )
@@ -18,8 +18,7 @@ const Confirmation = ({ purchasedItems }) => {
       { purchasedItemsList.length ?
       <div className='confirmation-container'>
         <h2>Thank you!</h2>
-        <p>Your Items Have Been Purchased!<br/></p>
-        <p>Your purchased items:</p>
+        <p>The following items have been purchased:</p>
         <div className='confirmation-items-list-container'>
           { purchasedItemsList }
         </div>
