@@ -29,8 +29,9 @@
 
 .cart-modal-item {
   padding: 15px;
-  height: 200px;
-  width: 200px;
+  height: 225px;
+  width: 100%;
+  border-bottom: solid
 }
 
 .cart-modal-image {
