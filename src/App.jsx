@@ -1,16 +1,18 @@
 import { useState } from 'react'
-import './App.css'
+import { Routes, Route, useParams } from 'react-router-dom'
 import Header from './components/Header/Header'
 import CartModal from './components/CartModal/CartModal'
 import Home from './components/Home/Home'
 import SearchResults from './components/SearchResults/SearchResults'
+import Confirmation from './components/Confirmation/Confirmation'
 import fetchFood from './utilities/apiCalls'
-import { Routes, Route, useParams } from 'react-router-dom'
+import './App.css'
 
 function App() {
   const [foodItemResult, setFoodItemResult] = useState({})
   const [cart, setCart] = useState([])
   const [cartNotif, setCartNotif] = useState("")
+  const [purchasedItems, setPurchasedItems] = useState([])
   const [showModal, setShowModal] = useState(false)
 
   const getFoodItem = (foodItem) => {
@@ -42,6 +44,15 @@ function App() {
     setShowModal(false)
   }
 
+  const addToPurchasedItems = () => {
+    setPurchasedItems([...cart])
+    setCart([])
+  }
+
+  const removeFromPurchasedItems = () => {
+    setPurchasedItems([])
+  }
+
   const Results = () => {
     let params = useParams()
 
@@ -70,10 +81,17 @@ function App() {
         />
       }
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
         <Route
           path="/:item"
           element={<Results />}
+        />
+        < Route
+          path="/confirmation"
+          element={<Confirmation purchasedItems={purchasedItems} />}
         />
       </Routes>
       {/* <Footer /> */}
