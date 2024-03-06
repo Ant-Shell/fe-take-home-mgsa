@@ -1,18 +1,25 @@
+import { useNavigate } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
 import PropTypes from 'prop-types'
 import './Header.css'
 
 const Header = ({ getFoodItem, toggleModal }) => {
+  const navigate = useNavigate()
 
   const modalToggle = (e) => {
     e.preventDefault()
     toggleModal()
   }
 
+  const returnHome = (e) => {
+    e.preventDefault()
+    navigate("/")
+  }
+
   return (
     <header className='header'>
       <div className='header-content-container'>
-        <p>Logo</p>
+        <p className='header-cart-logo' onClick={(e) => returnHome(e)}>Logo</p>
         <nav>
           <p>Navbar placeholder</p>
         </nav>
