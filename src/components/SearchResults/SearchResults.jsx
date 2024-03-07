@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import FoodCard from '../FoodCard/FoodCard'
 import './SearchResults.css'
 
-const SearchResults = ({ cart, foodItemResult, item,
-  getFoodItem, addToCart, removeFromCart }) => {
-  const {text, hints} = foodItemResult
+const SearchResults = ({ cart, foodItemName, item, errorMessage,
+  getFoodItem, addToCart, removeFromCart, foodResults, setFoodResults }) => {
+  // const {text, hints} = foodItemResult
   const [toggleList, setToggleList] = useState([])
 
     const handleChange = (e) => {
@@ -17,8 +17,8 @@ const SearchResults = ({ cart, foodItemResult, item,
       }
     }
 
-  const resultsList = hints?.map((hint, index) => {
-    const {food, measures} = hint
+  const resultsList = foodResults?.map((foodResult, index) => {
+    const {food, measures} = foodResult
 
     return (
       <FoodCard
@@ -33,8 +33,8 @@ const SearchResults = ({ cart, foodItemResult, item,
   })
 
   const checkBoxes = () => {
-    const nutrients = ["High Energy", "High Protien",
-     "Low Fat", "Low Carb", "High Fiber"]
+    const nutrients = ["Alphabetical", "Low Calorie", "Low Carb",
+     "Low Fat", "High Fiber", "High Protein"]
     return nutrients.map((nutrient, index) => {
       return (
         <div key={index} className='checkbox'>
@@ -51,24 +51,36 @@ const SearchResults = ({ cart, foodItemResult, item,
       )
     })
   }
+  // console.log(filteredResults)
+  // const applyFilters = () => {
+  //   if (toggleList.includes("Alphabetical")) {
+
+  //   }
+  // }
 
   useEffect(() => {
-    if (!Object.keys(foodItemResult).length) {
+    if (!foodResults.length && !errorMessage) {
       getFoodItem(item)
     }
   })
 
   return (
     <section className='search-results'>
-      <h2>
-        Your results for <span className='search-results__text'>{text}</span>
-      </h2>
-      <div className='search-results-filters-container'>
-        <h3>Filters: <span className='check-boxes'>{checkBoxes()}</span></h3>
-      </div>
-      <div className='search-results-list'>
-        {resultsList}
-      </div>
+      {( errorMessage ?
+        <p>Error: {errorMessage}<br/>Please try again.</p>
+        :
+      <>
+        <h2 className='search-results-banner'>
+          Your results for <span className='search-results__text'>{foodItemName}</span>
+        </h2>
+        <div className='search-results-filters-container'>
+          <h3 className='search-results-filters'>Filters: <span className='check-boxes'>{checkBoxes()}</span></h3>
+        </div>
+        <div className='search-results-list'>
+          {resultsList} {/* Do a ternary here based on if filtered or not? Replace with applyFilters funciton instead?*/}
+        </div>
+      </>
+      )}
     </section>
   )
 }
@@ -77,9 +89,12 @@ export default SearchResults
 
 SearchResults.propTypes = {
   cart: PropTypes.array,
-  foodItemResult: PropTypes.object,
+  foodItemName: PropTypes.string,
+  foodResults: PropTypes.array,
   item: PropTypes.string,
+  errorMessage: PropTypes.string,
   getFoodItem: PropTypes.func,
   addToCart: PropTypes.func,
   removeFromCart: PropTypes.func,
+  setFoodResults: PropTypes.func,
 }
