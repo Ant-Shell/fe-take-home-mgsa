@@ -5,12 +5,17 @@ import './SearchResults.css'
 
 const SearchResults = ({ cart, foodItemResult, item,
   getFoodItem, addToCart, removeFromCart }) => {
-  const [isChecked, setIsChecked] = useState(false)
   const {text, hints} = foodItemResult
+  const [toggleList, setToggleList] = useState([])
 
-  const handleChange = () => {
-    setIsChecked(!isChecked)
-  }
+    const handleChange = (e) => {
+      if (!toggleList.includes(e.target.value)) {
+        setToggleList([...toggleList, e.target.value])
+      } else {
+        const filteredList = toggleList.filter(item => item !== e.target.value)
+        setToggleList(filteredList)
+      }
+    }
 
   const resultsList = hints?.map((hint, index) => {
     const {food, measures} = hint
@@ -35,13 +40,13 @@ const SearchResults = ({ cart, foodItemResult, item,
         <div key={index} className='checkbox'>
           <input
             type="checkbox"
-            id={index}
-            name={nutrient}
+            id={nutrient}
+            name="nutrient"
             value={nutrient}
-            checked={isChecked}
-            onChange={handleChange}
+            checked={toggleList.includes(nutrient)}
+            onChange={(e) => handleChange(e)}
           />
-          <label>{nutrient}</label>
+          <label htmlFor={nutrient}>{nutrient}</label>
         </div>
       )
     })
