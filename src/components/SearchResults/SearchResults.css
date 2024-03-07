@@ -1,11 +1,22 @@
+.search-results-filters-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-results-filters {
+  width: 40%;
+  margin-top: 0;
+}
+
 .checkbox {
   margin-left: 10px;
+  margin-top: 10px;
 }
 
 .check-boxes {
-  margin-top: 10px;
   display: flex;
   justify-content: center;
   font-weight: 500;
   font-size: large;
+  flex-wrap: wrap;
 }
