@@ -1,12 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types'
 import FoodCard from '../FoodCard/FoodCard'
 import './SearchResults.css'
 
 const SearchResults = ({ cart, foodItemResult, item,
   getFoodItem, addToCart, removeFromCart }) => {
-
+  const [isChecked, setIsChecked] = useState(false)
   const {text, hints} = foodItemResult
+
+  const handleChange = () => {
+    setIsChecked(!isChecked)
+  }
 
   const resultsList = hints?.map((hint, index) => {
     const {food, measures} = hint
@@ -23,6 +27,26 @@ const SearchResults = ({ cart, foodItemResult, item,
     )
   })
 
+  const checkBoxes = () => {
+    const nutrients = ["High Energy", "High Protien",
+     "Low Fat", "Low Carb", "High Fiber"]
+    return nutrients.map((nutrient, index) => {
+      return (
+        <div key={index} className='checkbox'>
+          <input
+            type="checkbox"
+            id={index}
+            name={nutrient}
+            value={nutrient}
+            checked={isChecked}
+            onChange={handleChange}
+          />
+          <label>{nutrient}</label>
+        </div>
+      )
+    })
+  }
+
   useEffect(() => {
     if (!Object.keys(foodItemResult).length) {
       getFoodItem(item)
@@ -31,10 +55,15 @@ const SearchResults = ({ cart, foodItemResult, item,
 
   return (
     <section className='search-results'>
-      <p>
+      <h2>
         Your results for <span className='search-results__text'>{text}</span>
-      </p>
-      {resultsList}
+      </h2>
+      <div className='search-results-filters-container'>
+        <h3>Filters: <span className='check-boxes'>{checkBoxes()}</span></h3>
+      </div>
+      <div className='search-results-list'>
+        {resultsList}
+      </div>
     </section>
   )
 }
