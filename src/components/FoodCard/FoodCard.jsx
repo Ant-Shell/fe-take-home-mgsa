@@ -31,11 +31,13 @@ const FoodCard = ({ cart, food, measures, addToCart, removeFromCart }) => {
     }
   }
 
+  const measurementOunce = measures.find(measure => measure.label === "Ounce")
+
   return (
     <section className='food-card'>
       <div>
         <img src={image} alt={label}/>
-        <p>{label}</p>
+        <p>{label}<br/>{measurementOunce.weight.toFixed(1)}&nbsp;{measurementOunce.label}s</p>
       </div>
       { showButtonType(foodId) }
     </section>
