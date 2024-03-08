@@ -11,7 +11,6 @@ import './App.css'
 function App() {
   const [foodItemName, setFoodItemName] = useState('')
   const [cart, setCart] = useState([])
-  const [cartNotif, setCartNotif] = useState("")
   const [purchasedItems, setPurchasedItems] = useState([])
   const [foodResults, setFoodResults] = useState([])
   const [showModal, setShowModal] = useState(false)
@@ -30,10 +29,7 @@ function App() {
 
     if (!foundFood) {
       setCart([...cart, foodItem])
-      setCartNotif("")
-    } else (
-      setCartNotif("This item is already in the cart.")
-    )
+    }
   }
 
   const removeFromCart = (id) => {
