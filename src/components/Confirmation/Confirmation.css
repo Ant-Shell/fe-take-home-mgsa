@@ -1,15 +1,21 @@
-.confirmation {
-   /* Style me! */
-}
-
-.confirmation-container {
- /* Style me! */
+.confirmation-items-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: center;
+  justify-content: center;
+  overflow-y: auto;
 }
 
 .confirmation-item {
-  padding: 15px;
-  height: 225px;
-  width: 100%;
+  height: 250px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: lightgrey solid;
+  border-radius: 15px;
 }
 
 .confirmation-image {
