@@ -73,7 +73,7 @@ function App() {
   }
 
   return (
-    <main>
+    <main className='main'>
       <Header
         getFoodItem={getFoodItem}
         removeFromPurchasedItems={removeFromPurchasedItems}
