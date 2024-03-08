@@ -18,25 +18,23 @@ const FoodCard = ({ cart, food, measures, addToCart, removeFromCart }) => {
     const foundFood = cart.find(({foodId}) => foodId === id)
     if (foundFood) {
       return (
-        <button onClick={(e) => removeSelectionFromCart(e)}>
+        <button className='food-card-button-remove-item' onClick={(e) => removeSelectionFromCart(e)}>
           Remove from Cart
         </button>
       )
     } else {
       return (
-        <button onClick={(e) => addSelectionToCart(e)}>
+        <button className='food-card-button-add-item' onClick={(e) => addSelectionToCart(e)}>
           Add to Cart
         </button>
       )
     }
   }
 
-  const measurementOunce = measures.find(measure => measure.label === "Ounce")
-
   return (
     <section className='food-card'>
         <img className='food-card-image' src={image} alt={label}/>
-        <p>{label}<br/>{measurementOunce.weight.toFixed(1)}&nbsp;{measurementOunce.label}s</p>
+        <p>{label}</p>
       { showButtonType(foodId) }
     </section>
   )
