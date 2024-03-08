@@ -1,3 +1,14 @@
 .hero {
-  padding: 25px;
+  padding: 0 15px;
+
+}
+
+.hero-features {
+  display: flex;
+  text-align: left;
+}
+
+.hero-features-left,
+.hero-features-right {
+  padding: 0 15px;
 }
