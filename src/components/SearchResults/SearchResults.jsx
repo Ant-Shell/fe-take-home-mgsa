@@ -8,11 +8,12 @@ const SearchResults = ({ cart, foodItemName, item, errorMessage,
   const [toggleList, setToggleList] = useState([])
 
     const handleChange = (e) => {
-      if (toggleList.includes(e.target.value)) {
-        const filteredList = toggleList.filter(item => item !== e.target.value)
-        setToggleList(filteredList)
+      const checkedId = e.target.value
+      if (e.target.checked) {
+        setToggleList([...toggleList, checkedId])
       } else {
-        setToggleList([...toggleList, e.target.value])
+        const filteredList = toggleList.filter(id => id !== checkedId)
+        setToggleList(filteredList)
       }
     }
 
