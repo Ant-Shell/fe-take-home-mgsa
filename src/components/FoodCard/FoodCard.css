@@ -1,0 +1,12 @@
+.food-card {
+  height: 250px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.food-card-image {
+  height: 150px;
+  width: 150px;
+}
