@@ -100,7 +100,6 @@ function App() {
           element={<Confirmation purchasedItems={purchasedItems} />}
         />
       </Routes>
-      {/* <Footer /> */}
     </main>
   )
 }
