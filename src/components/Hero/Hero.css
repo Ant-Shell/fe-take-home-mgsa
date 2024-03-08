@@ -1,6 +1,10 @@
 .hero {
-  padding: 0 15px;
+  padding: 0 50px;
 
+}
+
+.hero-text {
+  line-height: 1.6;
 }
 
 .hero-features {
@@ -8,7 +12,11 @@
   text-align: left;
 }
 
+.hero-features-left {
+  border-right: lightgray solid;
+}
+
 .hero-features-left,
 .hero-features-right {
-  padding: 0 15px;
+  padding: 0 50px;
 }
