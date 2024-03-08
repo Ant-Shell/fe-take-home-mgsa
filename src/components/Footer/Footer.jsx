@@ -5,10 +5,8 @@ const Footer = () => {
     <footer className='footer'>
       <div className='footer-info'>
         <p className='footer-name'>
+          Created by:<br/>
           Anthony Shellman
-        </p>
-        <p>
-          LinkedIn
         </p>
       </div>
     </footer>
