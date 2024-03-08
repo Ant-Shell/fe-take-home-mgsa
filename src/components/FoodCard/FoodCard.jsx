@@ -35,10 +35,8 @@ const FoodCard = ({ cart, food, measures, addToCart, removeFromCart }) => {
 
   return (
     <section className='food-card'>
-      <div>
-        <img src={image} alt={label}/>
+        <img className='food-card-image' src={image} alt={label}/>
         <p>{label}<br/>{measurementOunce.weight.toFixed(1)}&nbsp;{measurementOunce.label}s</p>
-      </div>
       { showButtonType(foodId) }
     </section>
   )
