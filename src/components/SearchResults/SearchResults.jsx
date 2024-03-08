@@ -7,13 +7,12 @@ const SearchResults = ({ cart, foodItemName, item, errorMessage,
   getFoodItem, addToCart, removeFromCart, foodResults }) => {
 
   const resultsList = foodResults?.map((foodResult, index) => {
-    const {food, measures} = foodResult
+    const {food} = foodResult
 
     return (
       <FoodCard
         cart={cart}
         food={food}
-        measures={measures}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
         key={index}
