@@ -1,6 +1,6 @@
 .hero {
-  padding: 0 50px;
-
+  height: auto;
+  width: 100vw;
 }
 
 .hero-text {
@@ -8,15 +8,16 @@
 }
 
 .hero-features {
+  height: 100%;
   display: flex;
   text-align: left;
 }
 
-.hero-features-left {
-  border-right: lightgray solid;
+.hero-features-right {
+  border-left: lightgray solid;
 }
 
 .hero-features-left,
 .hero-features-right {
-  padding: 0 50px;
+  padding: 0 25px;
 }
