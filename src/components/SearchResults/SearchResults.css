@@ -1,17 +1,7 @@
-.search-results-filters-container {
+.search-results-list-container {
   display: flex;
-  justify-content: center;
-}
-
-.checkbox {
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
-.check-boxes {
-  display: flex;
-  justify-content: center;
-  font-weight: 500;
-  font-size: large;
   flex-wrap: wrap;
+  gap: 10px;
+  align-content: center;
+  justify-content: center;
 }
