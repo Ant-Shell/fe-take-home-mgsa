@@ -1,21 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types'
 import FoodCard from '../FoodCard/FoodCard'
 import './SearchResults.css'
 
 const SearchResults = ({ cart, foodItemName, item, errorMessage,
-  getFoodItem, addToCart, removeFromCart, foodResults, setFoodResults }) => {
-  const [toggleList, setToggleList] = useState([])
-
-    const handleChange = (e) => {
-      const checkedId = e.target.value
-      if (e.target.checked) {
-        setToggleList([...toggleList, checkedId])
-      } else {
-        const filteredList = toggleList.filter(id => id !== checkedId)
-        setToggleList(filteredList)
-      }
-    }
+  getFoodItem, addToCart, removeFromCart, foodResults }) => {
 
   const resultsList = foodResults?.map((foodResult, index) => {
     const {food, measures} = foodResult
@@ -32,32 +21,6 @@ const SearchResults = ({ cart, foodItemName, item, errorMessage,
     )
   })
 
-  const checkBoxes = () => {
-    const nutrients = ["Alphabetical", "Low Calorie", "Low Carb",
-     "Low Fat", "High Fiber", "High Protein"]
-    return nutrients.map((nutrient, index) => {
-      return (
-        <div key={index} className='checkbox'>
-          <input
-            type="checkbox"
-            id={nutrient}
-            name="nutrient"
-            value={nutrient}
-            checked={toggleList.includes(nutrient)}
-            onChange={(e) => handleChange(e)}
-          />
-          <label htmlFor={nutrient}>{nutrient}</label>
-        </div>
-      )
-    })
-  }
-  // console.log(filteredResults)
-  // const applyFilters = () => {
-  //   if (toggleList.includes("Alphabetical")) {
-
-  //   }
-  // }
-
   useEffect(() => {
     if (!foodResults.length && !errorMessage) {
       getFoodItem(item)
@@ -73,11 +36,8 @@ const SearchResults = ({ cart, foodItemName, item, errorMessage,
         <h2 className='search-results-banner'>
           Your results for <span className='search-results__text'>{foodItemName}</span>
         </h2>
-        <div className='search-results-filters-container'>
-          <h3 className='search-results-filters'>Filters: <span className='check-boxes'>{checkBoxes()}</span></h3>
-        </div>
         <div className='search-results-list'>
-          {resultsList} {/* Do a ternary here based on if filtered or not? Replace with applyFilters funciton instead?*/}
+          {resultsList}
         </div>
       </>
       )}
@@ -96,5 +56,4 @@ SearchResults.propTypes = {
   getFoodItem: PropTypes.func,
   addToCart: PropTypes.func,
   removeFromCart: PropTypes.func,
-  setFoodResults: PropTypes.func,
 }

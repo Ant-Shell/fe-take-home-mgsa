@@ -14,7 +14,6 @@ function App() {
   const [cartNotif, setCartNotif] = useState("")
   const [purchasedItems, setPurchasedItems] = useState([])
   const [foodResults, setFoodResults] = useState([])
-  // const [filteredFoodResults, setFilteredFoodResults] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
 
