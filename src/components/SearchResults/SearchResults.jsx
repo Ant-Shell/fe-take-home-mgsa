@@ -36,7 +36,7 @@ const SearchResults = ({ cart, foodItemName, item, errorMessage,
         <h2 className='search-results-banner'>
           Your results for <span className='search-results__text'>{foodItemName}</span>
         </h2>
-        <div className='search-results-list'>
+        <div className='search-results-list-container'>
           {resultsList}
         </div>
       </>
