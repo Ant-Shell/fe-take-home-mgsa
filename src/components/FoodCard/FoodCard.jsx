@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import './FoodCard.css'
 
-const FoodCard = ({ cart, food, measures, addToCart, removeFromCart }) => {
+const FoodCard = ({ cart, food, addToCart, removeFromCart }) => {
   const {foodId, label, image} = food
 
   const addSelectionToCart = (e) => {
@@ -45,7 +45,6 @@ export default FoodCard
 FoodCard.propTypes = {
   cart: PropTypes.array,
   food: PropTypes.object,
-  measures: PropTypes.array,
   addToCart: PropTypes.func,
   removeFromCart: PropTypes.func,
 }
