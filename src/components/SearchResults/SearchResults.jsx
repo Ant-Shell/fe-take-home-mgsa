@@ -5,7 +5,6 @@ import './SearchResults.css'
 
 const SearchResults = ({ cart, foodItemName, item, errorMessage,
   getFoodItem, addToCart, removeFromCart, foodResults, setFoodResults }) => {
-  // const {text, hints} = foodItemResult
   const [toggleList, setToggleList] = useState([])
 
     const handleChange = (e) => {
