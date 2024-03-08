@@ -4,11 +4,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #BCD8A4;
+  bottom: 0;
+  position: absolute;
+  margin-bottom: -15vh;
 }
 
 .footer-info {
   width: 50%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
