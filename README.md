@@ -45,6 +45,10 @@ This web application was created for a week-long take home challenge. It allowed
 ### Built With
 
 * [![React][React.js]][React-url]
+* [![React Router][React-Router-shield]][React-Router-url]
+* [![JavaScript][JavaScript-shield]][Javascript-url]
+* [![CSS][CSS-shield]][CSS-url]
+* [![NPM][NPM-shield]][NPM-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -129,6 +133,18 @@ There were lot of features and additional styling that I wanted to tackle during
 
 [React.js]: https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
 [React-url]: https://react.dev/
+
+[React-Router-shield]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
+[React-Router-url]: https://reactrouter.com/en/main
+
+[JavaScript-shield]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+[Javascript-url]: https://www.javascript.com/
+
+[CSS-shield]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[CSS-url]: https://www.w3schools.com/css/
+
+[NPM-shield]: https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white
+[NPM-url]: https://www.npmjs.com/
 
 [Linkedin]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [Linkedin-url]: https://www.linkedin.com/in/anthonyshellman/
