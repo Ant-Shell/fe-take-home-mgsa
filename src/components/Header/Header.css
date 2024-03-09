@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #BCD8A4;
 }
 
 .header-content-container {
@@ -11,6 +12,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.header-cart-logo {
+  height: 75px;
+  width: 75px;
+}
+
+.header-cart-img {
+  height: 35px;
+  width: 35px;
 }
 
 .header-cart-logo:hover {

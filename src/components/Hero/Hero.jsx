@@ -3,29 +3,64 @@ import './Hero.css'
 const Hero = () => {
   return (
     <div className='hero'>
-      <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-      Nisl vel pretium lectus quam id leo in vitae. Non pulvinar neque laoreet suspendisse interdum. 
-      Egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Massa massa ultricies mi quis hendrerit dolor. Vel fringilla est ullamcorper eget. 
-      Diam in arcu cursus euismod. Nunc sed velit dignissim sodales. Suspendisse sed nisi lacus sed viverra tellus. 
-      Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. 
-      Tortor at auctor urna nunc id cursus metus. Egestas integer eget aliquet nibh praesent. Nisl suscipit adipiscing bibendum est ultricies integer. 
-      Ipsum dolor sit amet consectetur adipiscing.
-    <br/>
-    <br/>
-      Pharetra diam sit amet nisl suscipit adipiscing. Faucibus purus in massa tempor nec feugiat. Magnis dis parturient montes nascetur ridiculus. 
-      Nunc scelerisque viverra mauris in aliquam. Vitae suscipit tellus mauris a diam maecenas sed. Cursus euismod quis viverra nibh cras pulvinar mattis. 
-      Ac turpis egestas integer eget aliquet nibh praesent. Semper eget duis at tellus at urna condimentum mattis pellentesque. 
-      Porttitor leo a diam sollicitudin tempor id eu nisl. Viverra tellus in hac habitasse platea.
-    <br/>
-    <br/>
-      Id eu nisl nunc mi ipsum faucibus vitae. Dictumst quisque sagittis purus sit amet volutpat consequat. Enim blandit volutpat maecenas volutpat blandit aliquam. 
-      Rutrum quisque non tellus orci ac auctor. Nec dui nunc mattis enim ut tellus. Hendrerit dolor magna eget est lorem ipsum dolor sit amet. 
-      Cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Adipiscing elit ut aliquam purus sit. Nisi porta lorem mollis aliquam ut porttitor. 
-      Pharetra convallis posuere morbi leo urna molestie at elementum. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis. 
-      Id nibh tortor id aliquet lectus proin nibh nisl condimentum. Turpis massa sed elementum tempus egestas sed sed risus pretium. 
-      Vitae nunc sed velit dignissim sodales ut eu sem. Dolor magna eget est lorem ipsum dolor sit amet consectetur.
-    </p>
+      <h1>
+        Welcome to Mock Grocery Store App!
+      </h1>
+      <p className='hero-text'>
+      Discover the convenience of grocery shopping at your fingertips with our user-friendly application.<br/>
+      Whether you&apos;re stocking up on essentials or exploring new products, we&apos;ve got you covered.
+      </p>
+      <br/>
+      <div className='hero-lower-section'>
+        <h2>Features Include:</h2>
+        <div className='hero-features'>
+          <div className='hero-features-left'>
+            <h3>
+              Effortless Product Search
+            </h3>
+            <p className='hero-text'>
+              Looking for a specific item? Our powerful search feature allows you to effortlessly find products tailored to your needs.<br/>
+              With just a few taps, access an organized list of results, making your shopping experience seamless and efficient.
+            </p>
+            <h3>
+              Build Your Cart
+            </h3>
+            <p className='hero-text'>
+              Add items to your virtual cart with a simple click.<br/>
+              Whether it&apos;s groceries for the week or last-minute essentials, our app makes it easy to compile your shopping list and keep track of your selections.
+            </p>
+            <h3>
+              Customize Your Cart
+            </h3>
+            <p className='hero-text'>
+              Oops, changed your mind? No problem!<br/>
+              Remove items from your cart with ease, ensuring you have complete control over your shopping experience.
+            </p>
+          </div>
+          <div className='hero-features-right'>
+            <h3>
+              Seamless &quot;Purchase&quot; Process
+            </h3>
+            <p className='hero-text'>
+            Ready to check out? Initiate a &quot;purchase&quot; for the items in your cart.<br/>
+            While you won&apos;t actually be completing a transaction, our app guides you through the process effortlessly, providing a glimpse into the smooth checkout experience.
+            </p>
+            <h3>
+              Confirmation Page
+            </h3>
+            <p className='hero-text'>
+              Celebrate your virtual shopping success!<br/>
+              After &quot;purchasing&quot; your items, you&apos;ll be directed to a confirmation page where you can review your selected products.<br/>
+              Its the perfect way to wrap up your shopping adventure and ensure you haven&apos;t missed anything.
+            </p>
+            <br/>
+            <p className='hero-text'>
+              Join us on Mock Grocery Store App today and revolutionize the way you shop for groceries.
+              Convenience, efficiency, and a touch of joy await you!
+            </p>
+        </div>
+      </div>
+    </div>
   </div>
   )
 }
