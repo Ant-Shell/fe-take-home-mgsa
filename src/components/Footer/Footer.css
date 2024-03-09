@@ -18,6 +18,6 @@
   align-items: center;
 }
 
-.footer-name {
-  margin-right: 15px;
+.footer-name-link {
+  text-decoration: none;
 }

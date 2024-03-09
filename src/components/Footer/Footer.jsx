@@ -6,7 +6,9 @@ const Footer = () => {
       <div className='footer-info'>
         <p className='footer-name'>
           Created by:<br/>
-          Anthony Shellman
+          <a className='footer-name-link' href="https://github.com/Ant-Shell/" target="_blank" rel="noopener noreferrer">
+            Anthony Shellman
+          </a>
         </p>
       </div>
     </footer>
