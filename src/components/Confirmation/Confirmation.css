@@ -16,6 +16,7 @@
   justify-content: center;
   border: lightgrey solid;
   border-radius: 15px;
+  background-color: white;
 }
 
 .confirmation-image {
