@@ -1,0 +1,25 @@
+.confirmation-items-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.confirmation-item {
+  height: 250px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: lightgrey solid;
+  border-radius: 15px;
+  background-color: white;
+}
+
+.confirmation-image {
+  height: 150px;
+  width: 150px;
+}
