@@ -3,7 +3,7 @@ import { Routes, Route, useParams } from 'react-router-dom'
 import Header from './components/Header/Header'
 import CartModal from './components/CartModal/CartModal'
 import HomePage from './components/HomePage/HomePage'
-import SearchResults from './components/SearchResults/SearchResults'
+import SearchResultsPage from './components/SearchResultsPage/SearchResultsPage'
 import Confirmation from './components/Confirmation/Confirmation'
 import fetchFood from './utilities/apiCalls'
 import './App.css'
@@ -58,7 +58,7 @@ function App() {
     let params = useParams()
 
     return (
-      <SearchResults
+      <SearchResultsPage
         item={params.item}
         cart={cart}
         foodItemName={foodItemName}
