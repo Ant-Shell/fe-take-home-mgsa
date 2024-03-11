@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Routes, Route, useParams } from 'react-router-dom'
 import Header from './components/Header/Header'
 import CartModal from './components/CartModal/CartModal'
-import Home from './components/Home/Home'
+import HomePage from './components/HomePage/HomePage'
 import SearchResults from './components/SearchResults/SearchResults'
 import Confirmation from './components/Confirmation/Confirmation'
 import fetchFood from './utilities/apiCalls'
@@ -89,7 +89,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home />}
+          element={<HomePage />}
         />
         <Route
           path="/:item"
