@@ -4,7 +4,7 @@ import Header from './components/Header/Header'
 import CartModal from './components/CartModal/CartModal'
 import HomePage from './components/HomePage/HomePage'
 import SearchResultsPage from './components/SearchResultsPage/SearchResultsPage'
-import Confirmation from './components/Confirmation/Confirmation'
+import ConfirmationPage from './components/ConfirmationPage/ConfirmationPage'
 import fetchFood from './utilities/apiCalls'
 import './App.css'
 
@@ -97,7 +97,7 @@ function App() {
         />
         < Route
           path="/confirmation"
-          element={<Confirmation purchasedItems={purchasedItems} />}
+          element={<ConfirmationPage purchasedItems={purchasedItems} />}
         />
       </Routes>
     </main>
