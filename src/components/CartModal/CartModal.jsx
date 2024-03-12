@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import './CartModal.css'
 
-const CartModal = ({ cart, hideModal, removeFromCart, addToPurchasedItems }) => {
+const CartModal = ({ cart, hideModal, removeFromCart }) => {
   const navigate = useNavigate()
 
   const closeModal = (e) => {
@@ -17,9 +17,8 @@ const CartModal = ({ cart, hideModal, removeFromCart, addToPurchasedItems }) => 
 
   const checkoutAction = (e) => {
     e.preventDefault()
-    addToPurchasedItems()
     hideModal()
-    navigate("/confirmation")
+    navigate("/checkout")
   }
 
   const cartItems = cart.map((item, index) => {
@@ -61,7 +60,6 @@ export default CartModal
 
 CartModal.propTypes = {
   cart: PropTypes.array,
-  addToPurchasedItems: PropTypes.func,
   hideModal: PropTypes.func,
   removeFromCart: PropTypes.func,
 }
