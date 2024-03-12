@@ -41,14 +41,11 @@ const CartModal = ({ cart, hideModal, removeFromCart }) => {
           Close
         </button>
       </header>
-      { cart.length ?
         <button className='cart-modal-checkout-button'
-        onClick={(e) => checkoutAction(e)}>
+        onClick={(e) => checkoutAction(e)}
+        disabled={!cart.length}>
           Checkout
         </button>
-        :
-        null
-      }
       <div className='cart-modal-item-container'>
         { cartItems }
       </div>
