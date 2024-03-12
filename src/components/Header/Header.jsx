@@ -5,7 +5,7 @@ import cart from '../../assets/cart.svg'
 import logo from '../../assets/logo.svg'
 import './Header.css'
 
-const Header = ({ getFoodItem, toggleModal, removeFromPurchasedItems }) => {
+const Header = ({ getFoodItem, toggleModal, removeFromPurchasedItems, hideModal }) => {
   const navigate = useNavigate()
 
   const modalToggle = (e) => {
@@ -17,6 +17,7 @@ const Header = ({ getFoodItem, toggleModal, removeFromPurchasedItems }) => {
     e.preventDefault()
     navigate("/")
     removeFromPurchasedItems()
+    hideModal()
   }
 
   return (
@@ -36,4 +37,5 @@ Header.propTypes = {
   getFoodItem: PropTypes.func,
   removeFromPurchasedItems: PropTypes.func,
   toggleModal: PropTypes.func,
+  hideModal: PropTypes.func, 
 }
