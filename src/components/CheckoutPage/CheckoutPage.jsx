@@ -1,31 +1,32 @@
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import './CheckoutPage.css'
 
-const CheckoutPage = () => {
+const CheckoutPage = ({ addToPurchasedItems, hideModal }) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [contactNumber, setContactNumber] = useState('')
   const [paymentMethod, setPaymentMethod] = useState('')
+  const navigate = useNavigate()
 
   const handleChange = (e, setter) => {
     setter(e.target.value)
   }
 
-  const placeOrder = () => {
-    console.log("Your order has been placed!")
-    // Need to route to the ConfirmationPage, which should display
-    // more in-depth order details
-    // e.preventDefault()
-    // addToPurchasedItems()
-    // hideModal()
-    // navigate("/confirmation")
+  const placeOrder = (e) => {
+    e.preventDefault()
+    addToPurchasedItems()
+    hideModal()
+    navigate("/confirmation")
   }
 
   return (
     <section className='checkout-page'>
+      <h2>Order Information</h2>
       <div className='checkout-page-container'>
-        <form className="checkout-page-form" onSubmit={placeOrder}>
+        <form className="checkout-page-form" onSubmit={(e) => placeOrder(e)}>
           <div className="checkout-page-inputs">
             <div className='checkout-page-input-container'>
               <label className='checkout-page-input-label'>First Name</label>
@@ -73,7 +74,8 @@ const CheckoutPage = () => {
               Payment Method:
             </label>
             <select className="checkout-page-select"
-              value={paymentMethod} onChange={(e) => handleChange(e, setPaymentMethod)}>
+              value={paymentMethod}
+              onChange={(e) => handleChange(e, setPaymentMethod)}>
               <option value="">Select</option>
               <option value="visa">Visa</option>
               <option value="mastercard">MasterCard</option>
@@ -81,7 +83,8 @@ const CheckoutPage = () => {
               <option value="discover">Discover</option>
             </select>
           </div>
-          <button className='checkout-page-order-button'>
+          <button className='checkout-page-order-button'
+          onClick={(e) => placeOrder(e)}>
             Place Order
           </button>
         </form>
@@ -91,3 +94,8 @@ const CheckoutPage = () => {
 }
 
 export default CheckoutPage
+
+CheckoutPage.propTypes = {
+  addToPurchasedItems: PropTypes.func,
+  hideModal: PropTypes.func,
+}
