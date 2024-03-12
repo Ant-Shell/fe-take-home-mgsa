@@ -4,6 +4,7 @@ import Header from './components/Header/Header'
 import CartModal from './components/CartModal/CartModal'
 import HomePage from './components/HomePage/HomePage'
 import SearchResultsPage from './components/SearchResultsPage/SearchResultsPage'
+import CheckoutPage from './components/CheckoutPage/CheckoutPage'
 import ConfirmationPage from './components/ConfirmationPage/ConfirmationPage'
 import fetchFood from './utilities/apiCalls'
 import './App.css'
@@ -81,7 +82,6 @@ function App() {
       />
       { showModal &&
         <CartModal cart={cart}
-          addToPurchasedItems={addToPurchasedItems}
           hideModal={hideModal}
           removeFromCart={removeFromCart}
         />
@@ -94,6 +94,14 @@ function App() {
         <Route
           path="/:item"
           element={<Results />}
+        />
+        <Route
+          path="/checkout"
+          element={<CheckoutPage
+          addToPurchasedItems={addToPurchasedItems}
+          hideModal={hideModal}
+          />
+        }
         />
         < Route
           path="/confirmation"
