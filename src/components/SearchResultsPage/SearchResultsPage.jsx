@@ -3,10 +3,20 @@ import PropTypes from 'prop-types'
 import FoodCard from '../FoodCard/FoodCard'
 import './SearchResultsPage.css'
 
-const SearchResultsPage = ({ cart, foodItemName, item, errorMessage,
+const SearchResultsPage = ({ cart, item, errorMessage,
   getFoodItem, addToCart, removeFromCart, foodResults }) => {
 
-  const resultsList = foodResults?.map((foodResult, index) => {
+  // This is a list of foodResults with duplicates removed, assuming they happen in succession
+  const itemizedResults = foodResults.reduce((acc, curr, index) => {
+    if (curr.food.foodId !== acc[index-1]?.food.foodId) {
+      acc.push(curr)
+    } else {
+      acc.splice([index-1], 1)
+    }
+    return acc
+  }, [])
+
+  const resultsList = itemizedResults?.map((foodResult, index) => {
     const {food} = foodResult
 
     return (
@@ -33,7 +43,7 @@ const SearchResultsPage = ({ cart, foodItemName, item, errorMessage,
         :
       <>
         <h2 className='search-results-banner'>
-          Your results for <span className='search-results__text'>{foodItemName}</span>
+          Your results for <span className='search-results__text'>{item}</span>
         </h2>
         <div className='search-results-list-container'>
           {resultsList}
@@ -48,7 +58,6 @@ export default SearchResultsPage
 
 SearchResultsPage.propTypes = {
   cart: PropTypes.array,
-  foodItemName: PropTypes.string,
   foodResults: PropTypes.array,
   item: PropTypes.string,
   errorMessage: PropTypes.string,
