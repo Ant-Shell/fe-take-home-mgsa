@@ -100,6 +100,7 @@ function App() {
           element={<CheckoutPage
           addToPurchasedItems={addToPurchasedItems}
           hideModal={hideModal}
+          cart={cart}
           />
         }
         />
