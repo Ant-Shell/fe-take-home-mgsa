@@ -10,7 +10,6 @@ import fetchFood from './utilities/apiCalls'
 import './App.css'
 
 function App() {
-  const [foodItemName, setFoodItemName] = useState('')
   const [cart, setCart] = useState([])
   const [purchasedItems, setPurchasedItems] = useState([])
   const [foodResults, setFoodResults] = useState([])
@@ -20,7 +19,6 @@ function App() {
   const getFoodItem = (foodItem) => {
     fetchFood(foodItem, setErrorMessage)
     .then(data => {
-      setFoodItemName(data.text)
       setFoodResults(data.hints)
     })
   }
@@ -62,7 +60,6 @@ function App() {
       <SearchResultsPage
         item={params.item}
         cart={cart}
-        foodItemName={foodItemName}
         foodResults={foodResults}
         errorMessage={errorMessage}
         getFoodItem={getFoodItem}
