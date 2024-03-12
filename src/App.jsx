@@ -76,6 +76,7 @@ function App() {
         getFoodItem={getFoodItem}
         removeFromPurchasedItems={removeFromPurchasedItems}
         toggleModal={toggleModal}
+        hideModal={hideModal}
       />
       { showModal &&
         <CartModal cart={cart}
