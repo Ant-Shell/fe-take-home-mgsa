@@ -6,12 +6,10 @@ import './SearchResultsPage.css'
 const SearchResultsPage = ({ cart, item, errorMessage,
   getFoodItem, addToCart, removeFromCart, foodResults }) => {
 
-  // This is a list of foodResults with duplicates removed, assuming they happen in succession
-  const itemizedResults = foodResults.reduce((acc, curr, index) => {
-    if (curr.food.foodId !== acc[index-1]?.food.foodId) {
+  const itemizedResults = foodResults.reduce((acc, curr) => {
+    let foundFood = acc.find(({food}) => food.foodId === curr.food.foodId)
+    if (!foundFood) {
       acc.push(curr)
-    } else {
-      acc.splice([index-1], 1)
     }
     return acc
   }, [])
