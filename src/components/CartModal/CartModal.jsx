@@ -33,7 +33,7 @@ const CartModal = ({ cart, hideModal, removeFromCart }) => {
   })
 
   return (
-    <section className='cart-modal'>
+    <aside className='cart-modal'>
       <header className='cart-modal-header'>
         <p>Cart</p>
         <button className='cart-modal-close-button'
@@ -49,7 +49,7 @@ const CartModal = ({ cart, hideModal, removeFromCart }) => {
       <div className='cart-modal-item-container'>
         { cartItems }
       </div>
-    </section>
+    </aside>
   )
 }
 
