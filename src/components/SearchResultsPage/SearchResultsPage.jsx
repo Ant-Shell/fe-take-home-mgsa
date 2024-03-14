@@ -4,7 +4,8 @@ import FoodCard from '../FoodCard/FoodCard'
 import './SearchResultsPage.css'
 
 const SearchResultsPage = ({ cart, item, errorMessage,
-  getFoodItem, addToCart, removeFromCart, foodResults }) => {
+  getFoodItem, addToCart, removeFromCart, foodResults,
+  increaseItemQuantity, decreaseItemQuantity }) => {
 
   const itemizedResults = foodResults.reduce((acc, curr) => {
     let foundFood = acc.find(({food}) => food.foodId === curr.food.foodId)
@@ -23,6 +24,8 @@ const SearchResultsPage = ({ cart, item, errorMessage,
         food={food}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
+        increaseItemQuantity={increaseItemQuantity}
+        decreaseItemQuantity={decreaseItemQuantity}
         key={index}
       />
     )
@@ -62,4 +65,6 @@ SearchResultsPage.propTypes = {
   getFoodItem: PropTypes.func,
   addToCart: PropTypes.func,
   removeFromCart: PropTypes.func,
+  increaseItemQuantity: PropTypes.func,
+  decreaseItemQuantity: PropTypes.func,
 }
