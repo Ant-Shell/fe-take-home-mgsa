@@ -22,11 +22,11 @@ const CartModal = ({ cart, hideModal, removeFromCart }) => {
   }
 
   const cartItems = cart.map((item, index) => {
-    const {image, label, foodId} = item
+    const {image, label, foodId, quantity} = item
     return (
       <div className='cart-modal-item' key={index}>
         <img className='cart-modal-image' src={image} alt={label}/>
-        <p>{label}</p>
+        <p>{label} x <span className='cart-modal-item-quantity'>{quantity}</span></p>
         <button onClick={(e) => removeItem(e, foodId)}>Remove Item</button>
       </div>
     )
