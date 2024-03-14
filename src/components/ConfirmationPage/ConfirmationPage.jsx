@@ -4,11 +4,11 @@ import "./ConfirmationPage.css"
 const ConfirmationPage = ({ purchasedItems }) => {
 
   const purchasedItemsList = purchasedItems.map((item, index) => {
-    const {image, label} = item
+    const {image, label, quantity} = item
     return (
       <div className='confirmation-item' key={index}>
         <img className='confirmation-image' src={image} alt={label}/>
-        <p>{label}</p>
+        <p>{label} x <span className='confirmation-item-quantity'>{quantity}</span></p>
       </div>
     )
   })
