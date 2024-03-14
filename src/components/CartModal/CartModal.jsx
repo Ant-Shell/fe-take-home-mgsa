@@ -27,7 +27,7 @@ const CartModal = ({ cart, hideModal, removeFromCart }) => {
       <div className='cart-modal-item' key={index}>
         <img className='cart-modal-image' src={image} alt={label}/>
         <p>{label} x <span className='cart-modal-item-quantity'>{quantity}</span></p>
-        <button onClick={(e) => removeItem(e, foodId)}>Remove Item</button>
+        <button className='cart-modal-remove-item-button' onClick={(e) => removeItem(e, foodId)}>Remove Item</button>
       </div>
     )
   })
@@ -35,7 +35,7 @@ const CartModal = ({ cart, hideModal, removeFromCart }) => {
   return (
     <aside className='cart-modal'>
       <header className='cart-modal-header'>
-        <p>Cart</p>
+        <h2 className='cart-modal-banner'>Cart</h2>
         <button className='cart-modal-close-button'
         onClick={(e) => closeModal(e)}>
           Close
