@@ -25,7 +25,7 @@ const FoodCard = ({ cart, food, addToCart, removeFromCart,
       )
     } else {
       return (
-        <button className='food-card-button-add-item' onClick={(e) => addSelectionToCart(e)}>
+        <button className='food-card-add-item-button' onClick={(e) => addSelectionToCart(e)}>
           Add to Cart
         </button>
       )
