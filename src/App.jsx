@@ -27,6 +27,7 @@ function App() {
     const foundFood = cart.find(({foodId}) => foodId === foodItem.foodId)
 
     if (!foundFood) {
+      foodItem.quantity = 1
       setCart([...cart, foodItem])
     }
   }
@@ -34,6 +35,22 @@ function App() {
   const removeFromCart = (id) => {
     const filteredCart = cart.filter(({foodId}) => foodId !== id)
     setCart(filteredCart)
+  }
+
+  const increaseItemQuantity = (id) => {
+    const foundFood = cart.find(({foodId}) => foodId === id)
+    foundFood.quantity++
+    const foundFoodIndexNum = cart.indexOf(foundFood)
+    const updatedCart = cart.toSpliced(foundFoodIndexNum, 1, foundFood)
+    setCart(updatedCart)
+  }
+
+  const decreaseItemQuantity = (id) => {
+    const foundFood = cart.find(({foodId}) => foodId === id)
+    foundFood.quantity--
+    const foundFoodIndexNum = cart.indexOf(foundFood)
+    const updatedCart = cart.toSpliced(foundFoodIndexNum, 1, foundFood)
+    setCart(updatedCart)
   }
 
   const toggleModal = () => {
@@ -66,6 +83,8 @@ function App() {
         addToCart={addToCart}
         removeFromCart={removeFromCart}
         setFoodResults={setFoodResults}
+        increaseItemQuantity={increaseItemQuantity}
+        decreaseItemQuantity={decreaseItemQuantity}
       />
     )
   }
