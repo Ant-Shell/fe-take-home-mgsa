@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types'
+import QuantityUpdater from '../QuantityUpdater/QuantityUpdater'
 import './FoodCard.css'
 
-const FoodCard = ({ cart, food, addToCart, removeFromCart }) => {
+const FoodCard = ({ cart, food, addToCart, removeFromCart,
+  increaseItemQuantity, decreaseItemQuantity }) => {
   const {foodId, label, image} = food
 
   const addSelectionToCart = (e) => {
@@ -9,18 +11,17 @@ const FoodCard = ({ cart, food, addToCart, removeFromCart }) => {
     addToCart(food)
   }
 
-  const removeSelectionFromCart = (e) => {
-    e.preventDefault()
-    removeFromCart(foodId)
-  }
-
   const showButtonType = (id) => {
     const foundFood = cart.find(({foodId}) => foodId === id)
     if (foundFood) {
       return (
-        <button className='food-card-button-remove-item' onClick={(e) => removeSelectionFromCart(e)}>
-          Remove from Cart
-        </button>
+        <QuantityUpdater
+          removeFromCart={removeFromCart}
+          increaseItemQuantity={increaseItemQuantity}
+          decreaseItemQuantity={decreaseItemQuantity}
+          quantity={foundFood.quantity}
+          id={foundFood.foodId}
+        />
       )
     } else {
       return (
@@ -47,4 +48,6 @@ FoodCard.propTypes = {
   food: PropTypes.object,
   addToCart: PropTypes.func,
   removeFromCart: PropTypes.func,
+  increaseItemQuantity: PropTypes.func,
+  decreaseItemQuantity: PropTypes.func,
 }
