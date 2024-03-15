@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types'
+import QuantityUpdater from '../QuantityUpdater/QuantityUpdater'
+import notAvailable from '../../assets/img-not-found.svg'
 import './FoodCard.css'
 
-const FoodCard = ({ cart, food, addToCart, removeFromCart }) => {
+const FoodCard = ({ cart, food, addToCart, removeFromCart,
+  increaseItemQuantity, decreaseItemQuantity }) => {
   const {foodId, label, image} = food
 
   const addSelectionToCart = (e) => {
@@ -9,22 +12,21 @@ const FoodCard = ({ cart, food, addToCart, removeFromCart }) => {
     addToCart(food)
   }
 
-  const removeSelectionFromCart = (e) => {
-    e.preventDefault()
-    removeFromCart(foodId)
-  }
-
   const showButtonType = (id) => {
     const foundFood = cart.find(({foodId}) => foodId === id)
     if (foundFood) {
       return (
-        <button className='food-card-button-remove-item' onClick={(e) => removeSelectionFromCart(e)}>
-          Remove from Cart
-        </button>
+        <QuantityUpdater
+          removeFromCart={removeFromCart}
+          increaseItemQuantity={increaseItemQuantity}
+          decreaseItemQuantity={decreaseItemQuantity}
+          quantity={foundFood.quantity}
+          id={foundFood.foodId}
+        />
       )
     } else {
       return (
-        <button className='food-card-button-add-item' onClick={(e) => addSelectionToCart(e)}>
+        <button className='food-card-add-item-button' onClick={(e) => addSelectionToCart(e)}>
           Add to Cart
         </button>
       )
@@ -33,7 +35,7 @@ const FoodCard = ({ cart, food, addToCart, removeFromCart }) => {
 
   return (
     <section className='food-card'>
-        <img className='food-card-image' src={image} alt={label}/>
+        <img className='food-card-image' src={image ? image : notAvailable} alt={label}/>
         <p>{label}</p>
       { showButtonType(foodId) }
     </section>
@@ -47,4 +49,6 @@ FoodCard.propTypes = {
   food: PropTypes.object,
   addToCart: PropTypes.func,
   removeFromCart: PropTypes.func,
+  increaseItemQuantity: PropTypes.func,
+  decreaseItemQuantity: PropTypes.func,
 }

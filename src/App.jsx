@@ -2,14 +2,14 @@ import { useState } from 'react'
 import { Routes, Route, useParams } from 'react-router-dom'
 import Header from './components/Header/Header'
 import CartModal from './components/CartModal/CartModal'
-import Home from './components/Home/Home'
-import SearchResults from './components/SearchResults/SearchResults'
-import Confirmation from './components/Confirmation/Confirmation'
+import HomePage from './components/HomePage/HomePage'
+import SearchResultsPage from './components/SearchResultsPage/SearchResultsPage'
+import CheckoutPage from './components/CheckoutPage/CheckoutPage'
+import ConfirmationPage from './components/ConfirmationPage/ConfirmationPage'
 import fetchFood from './utilities/apiCalls'
 import './App.css'
 
 function App() {
-  const [foodItemName, setFoodItemName] = useState('')
   const [cart, setCart] = useState([])
   const [purchasedItems, setPurchasedItems] = useState([])
   const [foodResults, setFoodResults] = useState([])
@@ -19,7 +19,6 @@ function App() {
   const getFoodItem = (foodItem) => {
     fetchFood(foodItem, setErrorMessage)
     .then(data => {
-      setFoodItemName(data.text)
       setFoodResults(data.hints)
     })
   }
@@ -28,6 +27,7 @@ function App() {
     const foundFood = cart.find(({foodId}) => foodId === foodItem.foodId)
 
     if (!foundFood) {
+      foodItem.quantity = 1
       setCart([...cart, foodItem])
     }
   }
@@ -35,6 +35,22 @@ function App() {
   const removeFromCart = (id) => {
     const filteredCart = cart.filter(({foodId}) => foodId !== id)
     setCart(filteredCart)
+  }
+
+  const increaseItemQuantity = (id) => {
+    const foundFood = cart.find(({foodId}) => foodId === id)
+    foundFood.quantity++
+    const foundFoodIndexNum = cart.indexOf(foundFood)
+    const updatedCart = cart.toSpliced(foundFoodIndexNum, 1, foundFood)
+    setCart(updatedCart)
+  }
+
+  const decreaseItemQuantity = (id) => {
+    const foundFood = cart.find(({foodId}) => foodId === id)
+    foundFood.quantity--
+    const foundFoodIndexNum = cart.indexOf(foundFood)
+    const updatedCart = cart.toSpliced(foundFoodIndexNum, 1, foundFood)
+    setCart(updatedCart)
   }
 
   const toggleModal = () => {
@@ -58,16 +74,17 @@ function App() {
     let params = useParams()
 
     return (
-      <SearchResults
+      <SearchResultsPage
         item={params.item}
         cart={cart}
-        foodItemName={foodItemName}
         foodResults={foodResults}
         errorMessage={errorMessage}
         getFoodItem={getFoodItem}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
         setFoodResults={setFoodResults}
+        increaseItemQuantity={increaseItemQuantity}
+        decreaseItemQuantity={decreaseItemQuantity}
       />
     )
   }
@@ -78,10 +95,12 @@ function App() {
         getFoodItem={getFoodItem}
         removeFromPurchasedItems={removeFromPurchasedItems}
         toggleModal={toggleModal}
+        hideModal={hideModal}
+        cart={cart}
+        showModal={showModal}
       />
       { showModal &&
         <CartModal cart={cart}
-          addToPurchasedItems={addToPurchasedItems}
           hideModal={hideModal}
           removeFromCart={removeFromCart}
         />
@@ -89,15 +108,24 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home />}
+          element={<HomePage />}
         />
         <Route
           path="/:item"
           element={<Results />}
         />
+        <Route
+          path="/checkout"
+          element={<CheckoutPage
+          addToPurchasedItems={addToPurchasedItems}
+          hideModal={hideModal}
+          cart={cart}
+          />
+        }
+        />
         < Route
           path="/confirmation"
-          element={<Confirmation purchasedItems={purchasedItems} />}
+          element={<ConfirmationPage purchasedItems={purchasedItems} />}
         />
       </Routes>
     </main>

@@ -14,3 +14,14 @@
   height: 150px;
   width: 150px;
 }
+
+.food-card-add-item-button {
+  background-color: #E5F6D7;
+  border-width: 1px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.food-card-add-item-button:hover {
+  background-color: #BCD8A4;
+}

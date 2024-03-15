@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom'
+import notAvailable from '../../assets/img-not-found.svg'
 import PropTypes from 'prop-types'
 import './CartModal.css'
 
-const CartModal = ({ cart, hideModal, removeFromCart, addToPurchasedItems }) => {
+const CartModal = ({ cart, hideModal, removeFromCart }) => {
   const navigate = useNavigate()
 
   const closeModal = (e) => {
@@ -17,43 +18,39 @@ const CartModal = ({ cart, hideModal, removeFromCart, addToPurchasedItems }) => 
 
   const checkoutAction = (e) => {
     e.preventDefault()
-    addToPurchasedItems()
     hideModal()
-    navigate("/confirmation")
+    navigate("/checkout")
   }
 
   const cartItems = cart.map((item, index) => {
-    const {image, label, foodId} = item
+    const {image, label, foodId, quantity} = item
     return (
       <div className='cart-modal-item' key={index}>
-        <img className='cart-modal-image' src={image} alt={label}/>
-        <p>{label}</p>
-        <button onClick={(e) => removeItem(e, foodId)}>Remove Item</button>
+        <img className='cart-modal-image' src={image ? image : notAvailable} alt={label}/>
+        <p>{label} x <span className='cart-modal-item-quantity'>{quantity}</span></p>
+        <button className='cart-modal-remove-item-button' onClick={(e) => removeItem(e, foodId)}>Remove Item</button>
       </div>
     )
   })
 
   return (
-    <section className='cart-modal'>
+    <aside className='cart-modal'>
       <header className='cart-modal-header'>
-        <p>Cart</p>
+        <h2 className='cart-modal-banner'>Cart</h2>
         <button className='cart-modal-close-button'
         onClick={(e) => closeModal(e)}>
           Close
         </button>
       </header>
-      { cart.length ?
         <button className='cart-modal-checkout-button'
-        onClick={(e) => checkoutAction(e)}>
+        onClick={(e) => checkoutAction(e)}
+        disabled={!cart.length}>
           Checkout
         </button>
-        :
-        null
-      }
       <div className='cart-modal-item-container'>
         { cartItems }
       </div>
-    </section>
+    </aside>
   )
 }
 
@@ -61,7 +58,6 @@ export default CartModal
 
 CartModal.propTypes = {
   cart: PropTypes.array,
-  addToPurchasedItems: PropTypes.func,
   hideModal: PropTypes.func,
   removeFromCart: PropTypes.func,
 }

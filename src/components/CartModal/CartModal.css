@@ -17,6 +17,10 @@
   justify-content: space-around;
 }
 
+.cart-modal-banner {
+  margin: 0;
+}
+
 .cart-modal-close-button,
 .cart-modal-checkout-button {
   cursor: pointer;
@@ -43,6 +47,26 @@
 .cart-modal-image {
   height: 150px;
   width: 150px;
+}
+
+.cart-modal-close-button,
+.cart-modal-checkout-button,
+.cart-modal-remove-item-button {
+  background-color: #E5F6D7;
+  border-width: 1px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cart-modal-close-button:hover,
+.cart-modal-checkout-button:hover,
+.cart-modal-remove-item-button:hover {
+  background-color: #BCD8A4;
+}
+
+.cart-modal-checkout-button:disabled {
+  background-color: #E5F6D7;
+  cursor: default;
 }
 
 @keyframes slideIn {

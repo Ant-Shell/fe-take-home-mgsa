@@ -1,0 +1,27 @@
+.quantity-updater {
+  width: 150px;
+  display: flex;
+  justify-content: space-around;
+  border: lightgray solid;
+  border-radius: 10px;
+}
+
+.quantity-updater-item-quantity {
+  margin: 0;
+}
+
+.quantity-updater-increase-button,
+.quantity-updater-decrease-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.quantity-updater-increase-button:hover,
+.quantity-updater-decrease-button:hover {
+  background-color: #BCD8A4;
+}

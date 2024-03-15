@@ -1,8 +1,8 @@
 import Hero from '../Hero/Hero'
 import Footer from '../Footer/Footer'
-import './Home.css'
+import './HomePage.css'
 
-const Home = () => {
+const HomePage = () => {
   return (
     <section className='home'>
       <Hero />
@@ -11,4 +11,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

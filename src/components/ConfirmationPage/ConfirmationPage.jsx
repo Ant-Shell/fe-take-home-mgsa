@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types'
-import "./Confirmation.css"
+import notAvailable from '../../assets/img-not-found.svg'
+import "./ConfirmationPage.css"
 
-const Confirmation = ({ purchasedItems }) => {
+const ConfirmationPage = ({ purchasedItems }) => {
 
   const purchasedItemsList = purchasedItems.map((item, index) => {
-    const {image, label} = item
+    const {image, label, quantity} = item
     return (
       <div className='confirmation-item' key={index}>
-        <img className='confirmation-image' src={image} alt={label}/>
-        <p>{label}</p>
+        <img className='confirmation-image' src={image ? image : notAvailable} alt={label}/>
+        <p>{label} x <span className='confirmation-item-quantity'>{quantity}</span></p>
       </div>
     )
   })
@@ -32,8 +33,8 @@ const Confirmation = ({ purchasedItems }) => {
   )
 }
 
-export default Confirmation
+export default ConfirmationPage
 
-Confirmation.propTypes = {
+ConfirmationPage.propTypes = {
   purchasedItems: PropTypes.array,
 }

@@ -1,12 +1,21 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types'
 import FoodCard from '../FoodCard/FoodCard'
-import './SearchResults.css'
+import './SearchResultsPage.css'
 
-const SearchResults = ({ cart, foodItemName, item, errorMessage,
-  getFoodItem, addToCart, removeFromCart, foodResults }) => {
+const SearchResultsPage = ({ cart, item, errorMessage,
+  getFoodItem, addToCart, removeFromCart, foodResults,
+  increaseItemQuantity, decreaseItemQuantity }) => {
 
-  const resultsList = foodResults?.map((foodResult, index) => {
+  const itemizedResults = foodResults.reduce((acc, curr) => {
+    let foundFood = acc.find(({food}) => food.foodId === curr.food.foodId)
+    if (!foundFood) {
+      acc.push(curr)
+    }
+    return acc
+  }, [])
+
+  const resultsList = itemizedResults?.map((foodResult, index) => {
     const {food} = foodResult
 
     return (
@@ -15,6 +24,8 @@ const SearchResults = ({ cart, foodItemName, item, errorMessage,
         food={food}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
+        increaseItemQuantity={increaseItemQuantity}
+        decreaseItemQuantity={decreaseItemQuantity}
         key={index}
       />
     )
@@ -33,7 +44,7 @@ const SearchResults = ({ cart, foodItemName, item, errorMessage,
         :
       <>
         <h2 className='search-results-banner'>
-          Your results for <span className='search-results__text'>{foodItemName}</span>
+          Your results for <span className='search-results__text'>{item}</span>
         </h2>
         <div className='search-results-list-container'>
           {resultsList}
@@ -44,15 +55,16 @@ const SearchResults = ({ cart, foodItemName, item, errorMessage,
   )
 }
 
-export default SearchResults
+export default SearchResultsPage
 
-SearchResults.propTypes = {
+SearchResultsPage.propTypes = {
   cart: PropTypes.array,
-  foodItemName: PropTypes.string,
   foodResults: PropTypes.array,
   item: PropTypes.string,
   errorMessage: PropTypes.string,
   getFoodItem: PropTypes.func,
   addToCart: PropTypes.func,
   removeFromCart: PropTypes.func,
+  increaseItemQuantity: PropTypes.func,
+  decreaseItemQuantity: PropTypes.func,
 }
