@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import QuantityUpdater from '../QuantityUpdater/QuantityUpdater'
+import notAvailable from '../../assets/img-not-found.svg'
 import './FoodCard.css'
 
 const FoodCard = ({ cart, food, addToCart, removeFromCart,
@@ -34,7 +35,7 @@ const FoodCard = ({ cart, food, addToCart, removeFromCart,
 
   return (
     <section className='food-card'>
-        <img className='food-card-image' src={image} alt={label}/>
+        <img className='food-card-image' src={image ? image : notAvailable} alt={label}/>
         <p>{label}</p>
       { showButtonType(foodId) }
     </section>

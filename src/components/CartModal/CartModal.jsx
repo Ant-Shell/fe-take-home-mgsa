@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import notAvailable from '../../assets/img-not-found.svg'
 import PropTypes from 'prop-types'
 import './CartModal.css'
 
@@ -25,7 +26,7 @@ const CartModal = ({ cart, hideModal, removeFromCart }) => {
     const {image, label, foodId, quantity} = item
     return (
       <div className='cart-modal-item' key={index}>
-        <img className='cart-modal-image' src={image} alt={label}/>
+        <img className='cart-modal-image' src={image ? image : notAvailable} alt={label}/>
         <p>{label} x <span className='cart-modal-item-quantity'>{quantity}</span></p>
         <button className='cart-modal-remove-item-button' onClick={(e) => removeItem(e, foodId)}>Remove Item</button>
       </div>

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import notAvailable from '../../assets/img-not-found.svg'
 import "./ConfirmationPage.css"
 
 const ConfirmationPage = ({ purchasedItems }) => {
@@ -7,7 +8,7 @@ const ConfirmationPage = ({ purchasedItems }) => {
     const {image, label, quantity} = item
     return (
       <div className='confirmation-item' key={index}>
-        <img className='confirmation-image' src={image} alt={label}/>
+        <img className='confirmation-image' src={image ? image : notAvailable} alt={label}/>
         <p>{label} x <span className='confirmation-item-quantity'>{quantity}</span></p>
       </div>
     )
