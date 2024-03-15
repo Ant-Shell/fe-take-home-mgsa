@@ -19,6 +19,20 @@
   width: 75px;
 }
 
+.header-cart-img-container {
+  height: 45px;
+  width: 45px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-cart-img-container-pulse {
+  animation: pulse 2s infinite;
+
+}
+
 .header-cart-img {
   height: 35px;
   width: 35px;
@@ -30,4 +44,13 @@
 
 .header-cart-img:hover {
   cursor: pointer;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    background-color: #BCD8A4;
+  }
+  50% {
+    background-color: #E5F6D7;
+  }
 }
