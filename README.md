@@ -89,6 +89,9 @@ VITE_APP_API_KEY=[YOUR-API-KEY-HERE]
 
 There were lot of features and additional styling that I wanted to tackle during this project, but I had to scope down due to the completion timeframe of a week. There is room for refactoring and improvement, but overall I'm happy with the result. Most importantly, I learned a lot along the way!
 
+**Update:**<br/>
+I have submitted the project and completed my final interview. I am thankful for the opportunity, and intend to keep updating this project for additional learning opportunities. 
+
 ### Functionality includes...
 - Intuitive user flow
 - Product search
@@ -109,7 +112,7 @@ There were lot of features and additional styling that I wanted to tackle during
 
 ## Roadmap
 
-- [ ] Add/Subtract Product Quantities
+- [x] Add/Subtract Product Quantities
 - [ ] Filter Search Results
 - [ ] Improve Accessibility
 - [ ] Improve Responsivness
