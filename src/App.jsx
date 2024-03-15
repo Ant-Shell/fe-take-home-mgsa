@@ -96,6 +96,8 @@ function App() {
         removeFromPurchasedItems={removeFromPurchasedItems}
         toggleModal={toggleModal}
         hideModal={hideModal}
+        cart={cart}
+        showModal={showModal}
       />
       { showModal &&
         <CartModal cart={cart}
