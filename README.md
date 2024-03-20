@@ -63,7 +63,7 @@ git clone [repository_url]
 ```
 - Install dependencies:
 ```
-npm -i
+npm i
 ```
 - Start the project
 ```
