@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/:item(\\w+)",
+      "destination": "https://fe-take-home-mgsa.vercel.app/:item"
+    },
+    {
+      "source": "/checkout",
+      "destination": "https://fe-take-home-mgsa.vercel.app/checkout"
+    },
+    {
+      "source": "/confirmation",
+      "destination": "https://fe-take-home-mgsa.vercel.app/confirmation"
+    }
+   ]
+}
