@@ -121,9 +121,7 @@ I have submitted the project and completed my final interview. I am thankful for
 
 ## Contact
 
-[Anthony Shellman](https://github.com/Ant-Shell/)<br/>
-[![LinkedIn][Linkedin]][Linkedin-url]
-[![Gmail][Gmail]][Gmail-url]
+[![LinkedIn][Linkedin]][Linkedin-url] [![Gmail][Gmail]][Gmail-url]
 
 ## API Used
 
