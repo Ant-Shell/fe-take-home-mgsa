@@ -53,14 +53,7 @@ This web application was created for a week-long take home challenge. It allowed
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Setup
-- Clone the repository to your local machine
-```
-git clone [repository_url]
-```
-- Navigate to the project directory:
-```
- cd [project_directory]
-```
+- Clone the repository to your local machine by following instructions [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 - Install dependencies:
 ```
 npm i
@@ -69,10 +62,28 @@ npm i
 ```
 npm run dev
 ```
+<br>
 
-Note: in order to utilize the search functionality, you will need API credentials, which can be obtained [here](https://developer.edamam.com/food-database-api).
-Then set up a local `.env` file with the following enteries:
+<strong>Note:</strong> in order to utilize the search functionality, you will need API credentials, which can be obtained [here](https://developer.edamam.com/food-database-api), using the following directions:
+<br>
+<ul>
+  <li> Step 1: Sign up for a free DEVELOPER account for the Food Database API here
+  <li> Step 2: Be sure to select the Developer plan for the Food Database API in the Choose your plan drop down menu.
+  <li> Step 3: You will be asked to provide an organization during the sign-up process. Please enter your name for the organization or your own personal organization name/identifier if you have one (this is to ensure that you can   make use of the free Developer plan).
+  <li> Step 4: Once your account is fully set up, you will be able to set up an Application here, which is where you will be able to find your Application ID and Application Keys, both of which you will need to make GET requests (you're welcome to name your application whatever you'd like to call it).
+  <li> Step 5: You should now be able to use the Edamam Food Database API to search for food items.
+    <ul>
+    <li> Here is an example GET request: <code>https://api.edamam.com/api/food-database/v2/parser?app_id=[APP ID HERE]&app_key=[APP KEY HERE]&ingr=[FOOD ITEM HERE]&nutrition-type=cooking</code>
+  </ul>
+</ul>
+<br>
 
+Then create up a local [.env](https://vitejs.dev/guide/env-and-mode) file in the root of the project:
+
+```
+touch .env
+```
+and add the follwing to the `.env` file:
 ```
 VITE_APP_API_ID=[YOUR-APP-ID-HERE]
 VITE_APP_API_KEY=[YOUR-API-KEY-HERE]
