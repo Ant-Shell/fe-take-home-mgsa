@@ -3,7 +3,17 @@ const API_KEY = import.meta.env.VITE_APP_API_KEY
 
 type ErrorSetter = (message: string) => void;
 
-const fetchFood = async (foodItem: string, errorSetter: ErrorSetter): Promise<void> => {
+interface Data {
+  hints: Food[];
+}
+
+interface Food {
+  foodId: string;
+  label: string;
+  image: string;
+}
+
+const fetchFood = async (foodItem: string, errorSetter: ErrorSetter): Promise<Data> => {
   const foodItemUrl = `https://api.edamam.com/api/food-database/v2/parser?app_id=${APP_ID}&app_key=${API_KEY}&ingr=${foodItem}&nutrition-type=cooking`
 
   try {
@@ -11,11 +21,11 @@ const fetchFood = async (foodItem: string, errorSetter: ErrorSetter): Promise<vo
     if (!response.ok) {
       throw new Error(`Status ${String(response.status)}: ${response.statusText}`)
     }
-    const data = await response.json()
+    const data: Data = await response.json()
 
     if (!data.hints.length) {
       errorSetter("No results found.")
-      return
+      throw new Error("No results found.")
     }
 
     return data
@@ -29,6 +39,7 @@ const fetchFood = async (foodItem: string, errorSetter: ErrorSetter): Promise<vo
       throw error
     }
   }
+  throw new Error ("An error has occurred")
 }
 
 export default fetchFood
