@@ -9,21 +9,34 @@ import ConfirmationPage from './components/ConfirmationPage/ConfirmationPage'
 import fetchFood from './utilities/apiCalls'
 import './App.css'
 
-function App() {
-  const [cart, setCart] = useState([])
-  const [purchasedItems, setPurchasedItems] = useState([])
-  const [foodResults, setFoodResults] = useState([])
-  const [showModal, setShowModal] = useState(false)
-  const [errorMessage, setErrorMessage] = useState("")
+interface Food {
+  foodId: string;
+  label: string;
+  image: string;
+}
 
-  const getFoodItem = (foodItem) => {
+interface FoundFood {
+  foodId: string;
+  label: string;
+  image: string;
+  quantity: number;
+}
+
+function App() {
+  const [cart, setCart] = useState<FoundFood[]>([])
+  const [purchasedItems, setPurchasedItems] = useState<FoundFood[]>([])
+  const [foodResults, setFoodResults] = useState<Food[]>([])
+  const [showModal, setShowModal] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<string>("")
+
+  const getFoodItem = (foodItem: string) => {
     fetchFood(foodItem, setErrorMessage)
     .then(data => {
       setFoodResults(data.hints)
     })
   }
 
-  const addToCart = (foodItem) => {
+  const addToCart = (foodItem: FoundFood) => {
     const foundFood = cart.find(({foodId}) => foodId === foodItem.foodId)
 
     if (!foundFood) {
@@ -32,25 +45,29 @@ function App() {
     }
   }
 
-  const removeFromCart = (id) => {
-    const filteredCart = cart.filter(({foodId}) => foodId !== id)
+  const removeFromCart = (id: string) => {
+    const filteredCart = cart.filter(({ foodId }) => foodId !== id)
     setCart(filteredCart)
   }
 
-  const increaseItemQuantity = (id) => {
-    const foundFood = cart.find(({foodId}) => foodId === id)
-    foundFood.quantity++
-    const foundFoodIndexNum = cart.indexOf(foundFood)
-    const updatedCart = cart.toSpliced(foundFoodIndexNum, 1, foundFood)
-    setCart(updatedCart)
+  const increaseItemQuantity = (id: string) => {
+    const foundFood = cart.find(({ foodId }) => foodId === id)
+    if (foundFood !== undefined) {
+      foundFood.quantity++
+      const foundFoodIndexNum = cart.indexOf(foundFood)
+      const updatedCart = cart.toSpliced(foundFoodIndexNum, 1, foundFood)
+      setCart(updatedCart)
+    }
   }
 
-  const decreaseItemQuantity = (id) => {
-    const foundFood = cart.find(({foodId}) => foodId === id)
-    foundFood.quantity--
-    const foundFoodIndexNum = cart.indexOf(foundFood)
-    const updatedCart = cart.toSpliced(foundFoodIndexNum, 1, foundFood)
-    setCart(updatedCart)
+  const decreaseItemQuantity = (id: string) => {
+    const foundFood = cart.find(({ foodId }) => foodId === id)
+    if (foundFood !== undefined) {
+      foundFood.quantity--
+      const foundFoodIndexNum = cart.indexOf(foundFood)
+      const updatedCart = cart.toSpliced(foundFoodIndexNum, 1, foundFood)
+      setCart(updatedCart)
+    }
   }
 
   const toggleModal = () => {
