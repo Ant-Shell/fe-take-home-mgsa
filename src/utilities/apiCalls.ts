@@ -4,13 +4,17 @@ const API_KEY = import.meta.env.VITE_APP_API_KEY
 type ErrorSetter = (message: string) => void;
 
 interface Data {
-  hints: Food[];
+  hints: FoodResult[];
 }
 
 interface Food {
   foodId: string;
   label: string;
   image: string;
+}
+
+interface FoodResult {
+  food: Food;
 }
 
 const fetchFood = async (foodItem: string, errorSetter: ErrorSetter): Promise<Data> => {
