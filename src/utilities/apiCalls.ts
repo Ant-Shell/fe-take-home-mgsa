@@ -11,6 +11,7 @@ interface Food {
   foodId: string;
   label: string;
   image: string;
+  quantity?: number;
 }
 
 interface FoodResult {
