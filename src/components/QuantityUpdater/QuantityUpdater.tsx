@@ -1,33 +1,44 @@
 import { PiPlusThin, PiMinusThin } from "react-icons/pi";
-import PropTypes from 'prop-types'
 import './QuantityUpdater.css'
 
-const QuantityUpdater = ({ id, quantity, removeFromCart,
-increaseItemQuantity, decreaseItemQuantity }) => {
+interface QuantityUpdaterProps {
+  id: string;
+  quantity?: number;
+  removeFromCart: (id: string) => void;
+  increaseItemQuantity: (id: string) => void;
+  decreaseItemQuantity: (id: string) => void;
+}
 
-  const increaseQuantity = (e) => {
+const QuantityUpdater = ({ id, quantity, removeFromCart,
+increaseItemQuantity, decreaseItemQuantity }: QuantityUpdaterProps) => {
+
+  const increaseQuantity = (e: React.SyntheticEvent) => {
     e.preventDefault()
     increaseItemQuantity(id)
   }
 
-  const decreaseQuantity = (e) => {
+  const decreaseQuantity = (e: React.SyntheticEvent) => {
     e.preventDefault()
     decreaseItemQuantity(id)
   }
 
-   const removeSelectionFromCart = (e) => {
+   const removeSelectionFromCart = (e: React.SyntheticEvent) => {
     e.preventDefault()
     removeFromCart(id)
   }
 
-  return (
-    <section className='quantity-updater'>
-      <button className='quantity-updater-decrease-button' onClick={(e) => {
-       quantity <= 1 ? 
+  const buttonDisplay = (e: React.SyntheticEvent) => {
+    if (quantity !== undefined) {
+      return quantity <= 1 ?
        removeSelectionFromCart(e)
        :
        decreaseQuantity(e)
-      }}>
+    }
+  }
+
+  return (
+    <section className='quantity-updater'>
+      <button className='quantity-updater-decrease-button' onClick={(e) => buttonDisplay(e)}>
         <PiMinusThin size={20}/>
       </button>
       <p className='quantity-updater-item-quantity'>{quantity}</p>
@@ -39,11 +50,3 @@ increaseItemQuantity, decreaseItemQuantity }) => {
 }
 
 export default QuantityUpdater
-
-QuantityUpdater.propTypes = {
-  id: PropTypes.string,
-  quantity: PropTypes.number,
-  removeFromCart: PropTypes.func,
-  increaseItemQuantity: PropTypes.func,
-  decreaseItemQuantity: PropTypes.func,
-}
