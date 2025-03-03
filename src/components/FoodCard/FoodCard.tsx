@@ -1,19 +1,34 @@
-import PropTypes from 'prop-types'
 import QuantityUpdater from '../QuantityUpdater/QuantityUpdater'
 import notAvailable from '../../assets/img-not-found.svg'
 import './FoodCard.css'
 
+interface Food {
+  foodId: string;
+  label: string;
+  image: string;
+  quantity?: number;
+}
+
+interface FoodCardProps {
+  cart: Food[];
+  food: Food;
+  addToCart: (foodItem: Food) => void;
+  removeFromCart: (id: string) => void;
+  increaseItemQuantity: (id: string) => void;
+  decreaseItemQuantity: (id: string) => void;
+}
+
 const FoodCard = ({ cart, food, addToCart, removeFromCart,
-  increaseItemQuantity, decreaseItemQuantity }) => {
+  increaseItemQuantity, decreaseItemQuantity }: FoodCardProps) => {
   const {foodId, label, image} = food
 
-  const addSelectionToCart = (e) => {
+  const addSelectionToCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     addToCart(food)
   }
 
-  const showButtonType = (id) => {
-    const foundFood = cart.find(({foodId}) => foodId === id)
+  const showButtonType = (id: string) => {
+    const foundFood = cart.find(({ foodId }) => foodId === id)
     if (foundFood) {
       return (
         <QuantityUpdater
@@ -44,11 +59,3 @@ const FoodCard = ({ cart, food, addToCart, removeFromCart,
 
 export default FoodCard
 
-FoodCard.propTypes = {
-  cart: PropTypes.array,
-  food: PropTypes.object,
-  addToCart: PropTypes.func,
-  removeFromCart: PropTypes.func,
-  increaseItemQuantity: PropTypes.func,
-  decreaseItemQuantity: PropTypes.func,
-}
