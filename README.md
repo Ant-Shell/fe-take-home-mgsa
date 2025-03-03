@@ -46,7 +46,7 @@ This web application was created for a week-long take home challenge. It allowed
 
 * [![React][React.js]][React-url]
 * [![React Router][React-Router-shield]][React-Router-url]
-* [![JavaScript][JavaScript-shield]][Javascript-url]
+* [![TypeScript][TypeScript-shield]][TypeScript-url]
 * [![CSS][CSS-shield]][CSS-url]
 * [![NPM][NPM-shield]][NPM-url]
 
@@ -124,9 +124,11 @@ I have submitted the project and completed my final interview. I am thankful for
 ## Roadmap
 
 - [x] Add/Subtract Product Quantities
+- [x] Refactor from PropTypes to TypeScript
 - [ ] Filter Search Results
 - [ ] Improve Accessibility
-- [ ] Improve Responsivness
+- [ ] Improve Overall Look and Responsivness
+- [ ] Implement State Management
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -151,6 +153,9 @@ I have submitted the project and completed my final interview. I am thankful for
 
 [JavaScript-shield]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
 [Javascript-url]: https://www.javascript.com/
+
+[TypeScript-shield]: https://img.shields.io/badge/TypeScript-4279C0?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
 
 [CSS-shield]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
 [CSS-url]: https://www.w3schools.com/css/
