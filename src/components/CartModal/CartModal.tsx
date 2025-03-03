@@ -1,22 +1,34 @@
 import { useNavigate } from 'react-router-dom'
 import notAvailable from '../../assets/img-not-found.svg'
-import PropTypes from 'prop-types'
 import './CartModal.css'
 
-const CartModal = ({ cart, hideModal, removeFromCart }) => {
+interface Food {
+  foodId: string;
+  label: string;
+  image: string;
+  quantity?: number;
+}
+
+interface CartModalProps {
+  cart: Food[];
+  hideModal: () => void;
+  removeFromCart: (id: string) => void;
+}
+
+const CartModal = ({ cart, hideModal, removeFromCart }: CartModalProps) => {
   const navigate = useNavigate()
 
-  const closeModal = (e) => {
+  const closeModal = (e: React.SyntheticEvent) => {
     e.preventDefault()
     hideModal()
   }
 
-  const removeItem = (e, id) => {
+  const removeItem = (e: React.SyntheticEvent, id: string) => {
     e.preventDefault()
     removeFromCart(id)
   }
 
-  const checkoutAction = (e) => {
+  const checkoutAction = (e: React.SyntheticEvent) => {
     e.preventDefault()
     hideModal()
     navigate("/checkout")
@@ -56,8 +68,3 @@ const CartModal = ({ cart, hideModal, removeFromCart }) => {
 
 export default CartModal
 
-CartModal.propTypes = {
-  cart: PropTypes.array,
-  hideModal: PropTypes.func,
-  removeFromCart: PropTypes.func,
-}
