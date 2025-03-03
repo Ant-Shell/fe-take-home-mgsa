@@ -29,10 +29,11 @@ increaseItemQuantity, decreaseItemQuantity }: QuantityUpdaterProps) => {
 
   const buttonDisplay = (e: React.SyntheticEvent) => {
     if (quantity !== undefined) {
-      return quantity <= 1 ?
-       removeSelectionFromCart(e)
-       :
-       decreaseQuantity(e)
+       if (quantity <= 1) {
+        removeSelectionFromCart(e)
+       } else {
+        decreaseQuantity(e)
+       }
     }
   }
 
