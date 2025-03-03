@@ -6,13 +6,7 @@ interface Food {
   foodId: string;
   label: string;
   image: string;
-}
-
-interface FoundFood {
-  foodId: string;
-  label: string;
-  image: string;
-  quantity: number;
+  quantity?: number;
 }
 
 interface FoodResult {
@@ -20,11 +14,11 @@ interface FoodResult {
 }
 
 interface SearchResultsPageProps {
-  cart: FoundFood[];
+  cart: Food[];
   item: string | undefined;
   errorMessage: string;
   getFoodItem: (foodItem: string) => void;
-  addToCart: (foodItem: FoundFood) => void;
+  addToCart: (foodItem: Food) => void;
   removeFromCart: (id: string) => void;
   foodResults: FoodResult[];
   increaseItemQuantity: (id: string) => void;
