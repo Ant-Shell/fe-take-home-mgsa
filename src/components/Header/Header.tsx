@@ -1,20 +1,35 @@
 import { useNavigate } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
-import PropTypes from 'prop-types'
 import cartImage from '../../assets/cart.svg'
 import logo from '../../assets/logo.svg'
 import './Header.css'
 
+interface Food {
+  foodId: string;
+  label: string;
+  image: string;
+  quantity?: number;
+}
+
+interface HeaderProps {
+  getFoodItem: (foodItem: string) => void;
+  toggleModal: () => void;
+  removeFromPurchasedItems: () => void;
+  hideModal: () => void;
+  cart: Food[];
+  showModal: boolean;
+}
+
 const Header = ({ getFoodItem, toggleModal, removeFromPurchasedItems,
-hideModal, cart , showModal}) => {
+  hideModal, cart , showModal }: HeaderProps) => {
   const navigate = useNavigate()
 
-  const modalToggle = (e) => {
+  const modalToggle = (e: React.SyntheticEvent) => {
     e.preventDefault()
     toggleModal()
   }
 
-  const returnHome = (e) => {
+  const returnHome = (e: React.SyntheticEvent) => {
     e.preventDefault()
     navigate("/")
     removeFromPurchasedItems()
@@ -36,11 +51,3 @@ hideModal, cart , showModal}) => {
 
 export default Header
 
-Header.propTypes = {
-  getFoodItem: PropTypes.func,
-  removeFromPurchasedItems: PropTypes.func,
-  toggleModal: PropTypes.func,
-  hideModal: PropTypes.func, 
-  cart: PropTypes.array,
-  showModal: PropTypes.bool,
-}
