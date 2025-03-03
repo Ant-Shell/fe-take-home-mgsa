@@ -18,11 +18,11 @@ interface CheckoutPageProps {
 }
 
 const CheckoutPage = ({ addToPurchasedItems, hideModal, cart }: CheckoutPageProps) => {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [contactNumber, setContactNumber] = useState('')
-  const [paymentMethod, setPaymentMethod] = useState('')
+  const [firstName, setFirstName] = useState<string>('')
+  const [lastName, setLastName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [contactNumber, setContactNumber] = useState<string>('')
+  const [paymentMethod, setPaymentMethod] = useState<string>('')
   const navigate = useNavigate()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> |
