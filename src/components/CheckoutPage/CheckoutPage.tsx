@@ -1,9 +1,23 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import PropTypes from 'prop-types'
 import './CheckoutPage.css'
 
-const CheckoutPage = ({ addToPurchasedItems, hideModal, cart }) => {
+type Setter = (value: string) => void;
+
+interface Food {
+  foodId: string;
+  label: string;
+  image: string;
+  quantity?: number;
+}
+
+interface CheckoutPageProps {
+  addToPurchasedItems: () => void;
+  hideModal: () => void;
+  cart: Food[];
+}
+
+const CheckoutPage = ({ addToPurchasedItems, hideModal, cart }: CheckoutPageProps) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -11,11 +25,12 @@ const CheckoutPage = ({ addToPurchasedItems, hideModal, cart }) => {
   const [paymentMethod, setPaymentMethod] = useState('')
   const navigate = useNavigate()
 
-  const handleChange = (e, setter) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement> |
+      React.ChangeEvent<HTMLSelectElement>, setter: Setter) => {
     setter(e.target.value)
   }
 
-  const placeOrder = (e) => {
+  const placeOrder = (e: React.SyntheticEvent) => {
     e.preventDefault()
     addToPurchasedItems()
     hideModal()
@@ -100,8 +115,3 @@ const CheckoutPage = ({ addToPurchasedItems, hideModal, cart }) => {
 
 export default CheckoutPage
 
-CheckoutPage.propTypes = {
-  addToPurchasedItems: PropTypes.func,
-  hideModal: PropTypes.func,
-  cart: PropTypes.array,
-}
