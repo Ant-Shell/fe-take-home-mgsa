@@ -29,7 +29,7 @@ const SearchResultsPage = ({ cart, item, errorMessage,
   getFoodItem, addToCart, removeFromCart, foodResults,
   increaseItemQuantity, decreaseItemQuantity }: SearchResultsPageProps) => {
 
-  // itemizedResults functions gets rid of duplicate items
+  // The itemizedResults function gets rid of duplicate items
   const itemizedResults = foodResults.reduce<FoodResult[]>((acc, curr) => {
     let foundFood = acc.find(({ food }) => food.foodId === curr.food.foodId)
     if (!foundFood) {
