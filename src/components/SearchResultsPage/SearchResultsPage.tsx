@@ -1,14 +1,43 @@
 import { useEffect } from 'react';
-import PropTypes from 'prop-types'
 import FoodCard from '../FoodCard/FoodCard'
 import './SearchResultsPage.css'
 
+interface Food {
+  foodId: string;
+  label: string;
+  image: string;
+}
+
+interface FoundFood {
+  foodId: string;
+  label: string;
+  image: string;
+  quantity: number;
+}
+
+interface FoodResult {
+  food: Food;
+}
+
+interface SearchResultsPageProps {
+  cart: FoundFood[];
+  item: string | undefined;
+  errorMessage: string;
+  getFoodItem: (foodItem: string) => void;
+  addToCart: (foodItem: FoundFood) => void;
+  removeFromCart: (id: string) => void;
+  foodResults: FoodResult[];
+  increaseItemQuantity: (id: string) => void;
+  decreaseItemQuantity: (id: string) => void;
+}
+
 const SearchResultsPage = ({ cart, item, errorMessage,
   getFoodItem, addToCart, removeFromCart, foodResults,
-  increaseItemQuantity, decreaseItemQuantity }) => {
+  increaseItemQuantity, decreaseItemQuantity }: SearchResultsPageProps) => {
 
-  const itemizedResults = foodResults.reduce((acc, curr) => {
-    let foundFood = acc.find(({food}) => food.foodId === curr.food.foodId)
+  // itemizedResults functions gets rid of duplicate items
+  const itemizedResults = foodResults.reduce<FoodResult[]>((acc, curr) => {
+    let foundFood = acc.find(({ food }) => food.foodId === curr.food.foodId)
     if (!foundFood) {
       acc.push(curr)
     }
@@ -16,7 +45,7 @@ const SearchResultsPage = ({ cart, item, errorMessage,
   }, [])
 
   const resultsList = itemizedResults?.map((foodResult, index) => {
-    const {food} = foodResult
+    const { food } = foodResult
 
     return (
       <FoodCard
@@ -33,7 +62,9 @@ const SearchResultsPage = ({ cart, item, errorMessage,
 
   useEffect(() => {
     if (!foodResults.length && !errorMessage) {
-      getFoodItem(item)
+      if (item !== undefined) {
+        getFoodItem(item)
+      }
     }
   })
 
@@ -57,14 +88,3 @@ const SearchResultsPage = ({ cart, item, errorMessage,
 
 export default SearchResultsPage
 
-SearchResultsPage.propTypes = {
-  cart: PropTypes.array,
-  foodResults: PropTypes.array,
-  item: PropTypes.string,
-  errorMessage: PropTypes.string,
-  getFoodItem: PropTypes.func,
-  addToCart: PropTypes.func,
-  removeFromCart: PropTypes.func,
-  increaseItemQuantity: PropTypes.func,
-  decreaseItemQuantity: PropTypes.func,
-}
