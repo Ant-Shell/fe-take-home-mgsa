@@ -22,10 +22,14 @@ interface FoundFood {
   quantity: number;
 }
 
+interface FoodResult {
+  food: Food;
+}
+
 function App() {
   const [cart, setCart] = useState<FoundFood[]>([])
   const [purchasedItems, setPurchasedItems] = useState<FoundFood[]>([])
-  const [foodResults, setFoodResults] = useState<Food[]>([])
+  const [foodResults, setFoodResults] = useState<FoodResult[]>([])
   const [showModal, setShowModal] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>("")
 
@@ -99,7 +103,6 @@ function App() {
         getFoodItem={getFoodItem}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
-        setFoodResults={setFoodResults}
         increaseItemQuantity={increaseItemQuantity}
         decreaseItemQuantity={decreaseItemQuantity}
       />
