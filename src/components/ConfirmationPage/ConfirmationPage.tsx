@@ -1,9 +1,18 @@
-import PropTypes from 'prop-types'
 import notAvailable from '../../assets/img-not-found.svg'
 import "./ConfirmationPage.css"
 
-const ConfirmationPage = ({ purchasedItems }) => {
+interface Food {
+  foodId: string;
+  label: string;
+  image: string;
+  quantity?: number;
+}
 
+interface ConfirmationPageProps {
+  purchasedItems: Food[];
+}
+
+const ConfirmationPage = ({ purchasedItems }: ConfirmationPageProps) => {
   const purchasedItemsList = purchasedItems?.map((item, index) => {
     const {image, label, quantity} = item
     return (
@@ -35,6 +44,3 @@ const ConfirmationPage = ({ purchasedItems }) => {
 
 export default ConfirmationPage
 
-ConfirmationPage.propTypes = {
-  purchasedItems: PropTypes.array,
-}

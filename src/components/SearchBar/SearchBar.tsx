@@ -1,17 +1,20 @@
 import { useState } from 'react'
-import PropTypes from 'prop-types'
 import './SearchBar.css'
 import { useNavigate } from 'react-router-dom'
 
-const SearchBar = ({ getFoodItem }) => {
-  const [searchInput, setSearchInput] = useState("")
+interface SearchBarProps {
+  getFoodItem: (foodItem: string) => void;
+}
+
+const SearchBar = ({ getFoodItem }: SearchBarProps) => {
+  const [searchInput, setSearchInput] = useState<string>("")
   const navigate = useNavigate()
 
-  const handleInput = (e) => {
+  const handleInput: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearchInput(e.target.value)
 }
 
-const searchItems = (e) => {
+const searchItems: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
   if (e.key === "Enter") {
     getFoodItem(searchInput)
     setSearchInput("")
@@ -35,6 +38,3 @@ const searchItems = (e) => {
 
 export default SearchBar
 
-SearchBar.propTypes = {
-  getFoodItem: PropTypes.func
-}
