@@ -13,13 +13,7 @@ interface Food {
   foodId: string;
   label: string;
   image: string;
-}
-
-interface FoundFood {
-  foodId: string;
-  label: string;
-  image: string;
-  quantity: number;
+  quantity?: number;
 }
 
 interface FoodResult {
@@ -27,8 +21,8 @@ interface FoodResult {
 }
 
 function App() {
-  const [cart, setCart] = useState<FoundFood[]>([])
-  const [purchasedItems, setPurchasedItems] = useState<FoundFood[]>([])
+  const [cart, setCart] = useState<Food[]>([])
+  const [purchasedItems, setPurchasedItems] = useState<Food[]>([])
   const [foodResults, setFoodResults] = useState<FoodResult[]>([])
   const [showModal, setShowModal] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>("")
@@ -40,7 +34,7 @@ function App() {
     })
   }
 
-  const addToCart = (foodItem: FoundFood) => {
+  const addToCart = (foodItem: Food) => {
     const foundFood = cart.find(({foodId}) => foodId === foodItem.foodId)
 
     if (!foundFood) {
@@ -56,7 +50,7 @@ function App() {
 
   const increaseItemQuantity = (id: string) => {
     const foundFood = cart.find(({ foodId }) => foodId === id)
-    if (foundFood !== undefined) {
+    if (foundFood !== undefined && foundFood.quantity) {
       foundFood.quantity++
       const foundFoodIndexNum = cart.indexOf(foundFood)
       const updatedCart = cart.toSpliced(foundFoodIndexNum, 1, foundFood)
@@ -66,7 +60,7 @@ function App() {
 
   const decreaseItemQuantity = (id: string) => {
     const foundFood = cart.find(({ foodId }) => foodId === id)
-    if (foundFood !== undefined) {
+    if (foundFood !== undefined && foundFood.quantity) {
       foundFood.quantity--
       const foundFoodIndexNum = cart.indexOf(foundFood)
       const updatedCart = cart.toSpliced(foundFoodIndexNum, 1, foundFood)
