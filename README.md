@@ -151,9 +151,6 @@ I have submitted the project and completed my final interview. I am thankful for
 [React-Router-shield]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
 [React-Router-url]: https://reactrouter.com/en/main
 
-[JavaScript-shield]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
-[Javascript-url]: https://www.javascript.com/
-
 [TypeScript-shield]: https://img.shields.io/badge/TypeScript-4279C0?style=for-the-badge&logo=typescript&logoColor=white
 [TypeScript-url]: https://www.typescriptlang.org/
 
